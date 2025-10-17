@@ -1,0 +1,77 @@
+# Infos :
+#   Page                    /url                                parametre(s)
+#
+### Inscription             /inscription                        email, mdp, numEtu - autres infos
+POST
+
+### Connexion               /connexion                          email, mdp
+POST
+
+### Catalogue               /
+GET
+
+### Catalogue               /                                   paramRecherche[]
+GET
+
+### Ouvrage                 /livre/{idLivre}                    idBu
+GET
+
+### Emprunter               /livre/{idLivre}/emprunt
+POST
+
+### Liste emprunt           /etudiant/{numEtu}/emprunt/
+GET
+
+### Retourner               /retour/{idEmprunt}
+POST
+
+### Information             /info                               idBu
+GET
+
+### Etendre emprunt         /emprunt/{idEmprunt}/extension
+POST
+
+### Tableau de bord         /dashboard                          user (optionnel, sinon celui de l'utilsateur qui envoie la requete)
+# admin et user
+GET
+
+### Notification            /notifications
+GET
+
+
+
+### Demandes                /demande
+GET
+
+### Valider demande         /demande/{idDemande}/validation
+POST
+
+### Rejeter demande         /demande/{idDemande}/rejet
+POST
+
+### Modifier ouvrage        /livre/{idLivre}
+PATCH
+
+### Aff. catalogue(modif)   /catalogue
+GET
+
+### Modifier catalogue      /catalogue                          liste ouvrage
+PATCH
+
+### Ajouter ouvrage         /livre                              ouvrageDTO
+POST
+
+### Supprime ouvrage(s)     /livre                              liste id Ouvrage
+DELETE
+
+### Modifier info Bu        /info                               idBu
+PATCH
+
+### Modifier eturdiant      /etudiant/{numEtu}                  userDTO
+PATCH
+
+### Supprimer etudiant      /etudiant/{numEtu}
+DELETE
+
+### Rappeler etudiant       /etudiant/{numEtu}/rappel
+POST
