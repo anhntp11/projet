@@ -1,10 +1,10 @@
-package fr.orleans.m1s1miage.group4.backend.facades;
+package fr.orleans.m1s1miage.group4.backend.model.facades;
 
 
-import fr.orleans.m1s1miage.group4.backend.entites.Emprunt;
-import fr.orleans.m1s1miage.group4.backend.entites.Notification;
-import fr.orleans.m1s1miage.group4.backend.entites.TypeEmprunt;
-import fr.orleans.m1s1miage.group4.backend.exception.*;
+import fr.orleans.m1s1miage.group4.backend.model.entites.Emprunt;
+import fr.orleans.m1s1miage.group4.backend.model.entites.Notification;
+import fr.orleans.m1s1miage.group4.backend.model.entites.TypeEmprunt;
+import fr.orleans.m1s1miage.group4.backend.model.exception.*;
 
 import java.util.List;
 
