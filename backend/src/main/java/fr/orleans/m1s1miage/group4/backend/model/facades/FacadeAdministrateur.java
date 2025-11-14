@@ -1,6 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.model.facades;
 
-import fr.orleans.m1s1miage.group4.backend.model.entites.*;
+import fr.orleans.m1s1miage.group4.backend.model.entity.*;
 import fr.orleans.m1s1miage.group4.backend.model.exception.*;
 
 import java.util.List;
