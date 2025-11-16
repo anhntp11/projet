@@ -8,7 +8,7 @@ public class Livre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private Long test;
     @Column(nullable = false)
     
 }
