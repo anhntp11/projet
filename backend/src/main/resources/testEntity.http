@@ -1,0 +1,12 @@
+### Test Get Genre
+GET http://localhost:8080/api/test/genre
+
+### Test Post Genre
+POST http://localhost:8080/api/test/genre
+
+### Test Get Livre
+GET http://localhost:8080/api/test/livre
+
+### Test Post Livre
+POST http://localhost:8080/api/test/livre
+

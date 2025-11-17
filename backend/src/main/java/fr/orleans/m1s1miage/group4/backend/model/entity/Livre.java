@@ -5,74 +5,93 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Livre")
-
-public class Livre {
+public class Livre extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLivre;
-    private String titre;
-    private String langue;
-    private String edition;
-    private String nomAuteur;
-    private LocalDateTime tempsCreer;
-    private LocalDateTime tempsMiseAJour;
+    private Long id;
 
-    //Constructor
-    public Livre(Long idLivre,String titre, String langue,String edition,
-                 String nomAuteur,LocalDateTime tempsCreer, LocalDateTime tempsMiseAJour) {
-        this.idLivre = idLivre;
+    @Column(nullable = false)
+    private String titre;
+
+    @Column()
+    private String langue;
+
+    @Column(nullable = false)
+    private String auteur;
+
+    @ManyToMany
+    @JoinTable(
+            name = "genre_livre",
+            joinColumns = @JoinColumn(name = "livre_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    private Set<Genre> genres = new HashSet<>();
+
+    /**
+     * Nombre d'unité en stock
+     */
+    @Column(nullable = false)
+    private int stock;
+
+    // constructeurs
+    public Livre() {
+    }
+
+    public Livre(String titre, String langue, String auteur, int stock) {
         this.titre = titre;
         this.langue = langue;
-        this.edition = edition;
-        this.nomAuteur = nomAuteur;
-        this.tempsCreer = tempsCreer;
-        this.tempsMiseAJour = tempsMiseAJour;
+        this.auteur = auteur;
+        this.stock = stock;
     }
-    public Long getIdLivre() {
-        return idLivre;
+
+    //getters setters
+
+    public Long getId() {
+        return id;
     }
-    public void setIdLivre(Long idLivre) {
-        this.idLivre = idLivre;
-    }
+
     public String getTitre() {
         return titre;
     }
+
     public void setTitre(String titre) {
         this.titre = titre;
     }
+
     public String getLangue() {
         return langue;
     }
+
     public void setLangue(String langue) {
         this.langue = langue;
     }
-    public String getEditon() {
-        return edition;
-    }
-    public void setEditon(String edition) {
-        this.edition = edition;
-    }
-    public String getNomAuteur() {
-        this.nomAuteur = nomAuteur;
-    }
-    public void setNomAuteur(String nomAuteur) {
-        this.nomAuteur = nomAuteur;
-    }
-    public LocalDateTime getTempsCreer() {
-        return tempsCreer;
-    }
-    public LocalDateTime setTempsCreer(LocalDateTime tempsCreer) {
-        this.tempsCreer = tempsCreer;
-    }
-    public LocalDateTime getTempsMiseAJour() {
-        return tempsMiseAJour;
-    }
-    public void setTempsMiseAJour(LocalDateTime tempsMiseAJour) {
-        this.tempsMiseAJour = tempsMiseAJour;
+
+    public String getAuteur() {
+        return auteur;
     }
 
-    @Column(nullable = false)
+    public void setAuteur(String auteur) {
+        this.auteur = auteur;
+    }
 
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Set<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<Genre> genres) {
+        this.genres = genres;
+    }
 }

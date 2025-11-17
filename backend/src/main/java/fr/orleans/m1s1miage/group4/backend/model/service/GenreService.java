@@ -31,4 +31,12 @@ public class GenreService {
         genreRepository.save(genre);
     }
 
+
+    /**
+     * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
+     */
+    public Genre findFirst() {
+        return genreRepository.findAll().get(0);
+    }
+
 }
