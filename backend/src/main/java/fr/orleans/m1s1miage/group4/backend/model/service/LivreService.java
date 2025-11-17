@@ -37,9 +37,9 @@ public class LivreService {
      * On met à null l'id pour forcer JPA à faire un insert.
      */
     public Livre createLivre(Livre livre){
-        livre.setIdLivre(null);
-        livre.setTempsCreer(LocalDateTime.now());
-        livre.setTempsMiseAJour(LocalDateTime.now());
+//        livre.setIdLivre(null);
+//        livre.setTempsCreer(LocalDateTime.now());
+//        livre.setTempsMiseAJour(LocalDateTime.now());
         return livreRepository.save(livre);
     }
 
@@ -50,9 +50,9 @@ public class LivreService {
         Livre existant = findById(idLivre);
         existant.setTitre(livreModifie.getTitre());
         existant.setLangue(livreModifie.getLangue());
-        existant.setEditon(livreModifie.getEditon());
-        existant.setNomAuteur(livreModifie.getNomAuteur());
-        existant.setTempsMiseAJour(LocalDateTime.now());
+//        existant.setEditon(livreModifie.getEditon());
+//        existant.setNomAuteur(livreModifie.getNomAuteur());
+//        existant.setTempsMiseAJour(LocalDateTime.now());
         existant.setStock(livreModifie.getStock());
 
         return livreRepository.save(existant);
