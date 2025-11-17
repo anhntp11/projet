@@ -10,6 +10,6 @@ Si le serveur ne se lance pas ou se ferme, vous pouvez le relancer avec la comma
 
 ## Ressources :
 
-[React JS](https://react.dev/)
-[Vite](https://vite.dev/)
+[React JS](https://react.dev/)  
+[Vite](https://vite.dev/)  
 [Yarn](https://yarnpkg.com/)

@@ -2,13 +2,6 @@
 #   Page                    /api/url                                parametre(s)
 #
 
-### Test Get
-GET http://localhost:8080/api/
-
-### Test Post
-POST http://localhost:8080/api/
-
-
 ### Inscription             /inscription                        email, mdp, numEtu - autres infos
 POST http://localhost:8080/api/inscription
 

@@ -9,7 +9,9 @@ Le backend ne tourne pas dans un container docker, sont port est le `8080` (http
 
 Pour lancer le backend vous pouvez simplement executé la calsse main comme d'habitude, pas de changement ici. 
 
+Identifiant BD si vous en avez besoin : id : `root`, password : `root`
+
 ## Ressources :
 
-Celene 
+Celene   
 [Spring Data JPA](https://docs.spring.io/spring-data/jpa/reference/index.html)
