@@ -2,7 +2,6 @@ package fr.orleans.m1s1miage.group4.backend.model.entity;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,10 +55,9 @@ public class Genre extends BaseEntity {
         this.description = description;
     }
 
-    public Set<Livre> getLivres() {
-        return livres;
-    }
-
+//    public Set<Livre> getLivres() {
+//        return livres;
+//    }
     public void setLivres(Set<Livre> livres) {
         this.livres = livres;
     }

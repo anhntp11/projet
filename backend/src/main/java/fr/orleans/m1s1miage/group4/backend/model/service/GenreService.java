@@ -27,7 +27,7 @@ public class GenreService {
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
      * @param genre Le genre a sauvegarder
      */
-    public void SaveGenre(Genre genre) {
+    public void Save(Genre genre) {
         genreRepository.save(genre);
     }
 

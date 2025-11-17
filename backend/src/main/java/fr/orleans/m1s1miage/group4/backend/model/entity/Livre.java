@@ -32,6 +32,14 @@ public class Livre extends BaseEntity {
     )
     private Set<Genre> genres = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(
+            name = "bu_livre",
+            joinColumns = @JoinColumn(name = "livre_id"),
+            inverseJoinColumns = @JoinColumn(name = "bu_id")
+    )
+    private Set<BU> bus = new HashSet<>();
+
     /**
      * Nombre d'unité en stock
      */
@@ -93,5 +101,13 @@ public class Livre extends BaseEntity {
 
     public void setGenres(Set<Genre> genres) {
         this.genres = genres;
+    }
+
+    public Set<BU> getBus() {
+        return bus;
+    }
+
+    public void setBus(Set<BU> bus) {
+        this.bus = bus;
     }
 }
