@@ -59,7 +59,7 @@ public class TestController {
         genres.add(genreService.findFirst());
         livre.setGenres(genres);
 
-        livreService.Save(livre);
+        livreService.save(livre);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(livre.getTitre() + " - "+ livre.getAuteur() + " - "+ livre.getStock());
     }

@@ -16,6 +16,10 @@ public class LivreService {
         this.livreRepository = livreRepository;
     }
 
+    public void save(Livre livre) {
+        livreRepository.save(livre);
+    }
+
     /**
      * Récupérer tous les livres.
      */

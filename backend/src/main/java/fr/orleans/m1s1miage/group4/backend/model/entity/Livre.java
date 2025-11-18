@@ -1,9 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.model.entity;
 
-import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
 import jakarta.persistence.*;
-
-import java.time.LocalDateTime;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +10,7 @@ import java.util.Set;
 public class Livre extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idLivre;
 
     @Column(nullable = false)
     private String titre;
@@ -60,7 +57,7 @@ public class Livre extends BaseEntity {
     //getters setters
 
     public Long getId() {
-        return id;
+        return idLivre;
     }
 
     public String getTitre() {

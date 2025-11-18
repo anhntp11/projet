@@ -8,7 +8,7 @@ public class InfoBU extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idInfoBU;
 
     @Column(nullable = false)
     private String nom;
@@ -33,7 +33,7 @@ public class InfoBU extends BaseEntity {
 
 
     public Long getId() {
-        return id;
+        return idInfoBU;
     }
 
     public String getInformations() {

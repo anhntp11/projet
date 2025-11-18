@@ -11,7 +11,7 @@ public class BU extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idBU;
 
     @Column(nullable = false)
     private String nom;
@@ -38,8 +38,8 @@ public class BU extends BaseEntity {
         this.nom = nom;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdBU() {
+        return idBU;
     }
 
     public Set<InfoBU> getInfos() {
