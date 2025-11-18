@@ -3,7 +3,7 @@ package fr.orleans.m1s1miage.group4.backend.model.facades;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Emprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Notification;
-import fr.orleans.m1s1miage.group4.backend.model.entity.TypeEmprunt;
+import fr.orleans.m1s1miage.group4.backend.model.entity.StatutEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.exception.*;
 
 import java.util.List;
@@ -34,10 +34,10 @@ public interface FacadeEtudiant {
 
     /**
      * Récupère une liste d'emprunt de l'utilsateur
-     * @param typeEmprunt type à récupérer (Tous, EnCours, Rendus, etc...)
+     * @param statutEmprunt type à récupérer (Tous, EnCours, Rendus, etc...)
      * @return la liste des Emprunts demandés
      */
-    public List<Emprunt> getListeEmprunt(TypeEmprunt typeEmprunt);
+    public List<Emprunt> getListeEmprunt(StatutEmprunt statutEmprunt);
     /**
      * Etend la durée d'un emprunt
      * @param idEmprunt emprunt à étendre

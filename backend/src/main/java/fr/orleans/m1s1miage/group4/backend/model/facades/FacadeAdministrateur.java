@@ -12,10 +12,10 @@ public interface FacadeAdministrateur {
 
     /**
      * Récupère une liste de tous les emprunts
-     * @param typeEmprunt type à récupérer (Tous, EnCours, Rendus, etc...)
+     * @param statutEmprunt type à récupérer (Tous, EnCours, Rendus, etc...)
      * @return la liste des Emprunts demandés
      */
-    public List<Emprunt> getTousLesEmprunts(TypeEmprunt typeEmprunt);
+    public List<Emprunt> getTousLesEmprunts(StatutEmprunt statutEmprunt);
 
     /**
      * Récupère la liste des demandes d'emprunt
