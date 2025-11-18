@@ -12,10 +12,15 @@ public class Notification extends BaseEntity {
     @Column(nullable = false)
     private String message;
 
+    @ManyToOne
+    @JoinColumn(name = "etudiant_id")
+    private Etudiant etudiant;
+
     //constructeurs
     public Notification() {}
-    public Notification(String message) {
+    public Notification(String message, Etudiant etudiant) {
         this.message = message;
+        this.etudiant = etudiant;
     }
 
     //getters / setters

@@ -2,6 +2,9 @@ package fr.orleans.m1s1miage.group4.backend.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Etudiants")
 public class Etudiant extends Utilsateur {
@@ -21,6 +24,9 @@ public class Etudiant extends Utilsateur {
     @Column(nullable = false)
     private String departement;
 
+    @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
+    private Set<Notification> notifications = new HashSet<>();
+
     //constructeur
 
     public Etudiant() {
@@ -36,6 +42,14 @@ public class Etudiant extends Utilsateur {
 
     //getters / setters
 
+
+    public Set<Notification> getNotifications() {
+        return notifications;
+    }
+
+    public void setNotifications(Set<Notification> notifications) {
+        this.notifications = notifications;
+    }
 
     public Long getIdEtudiant() {
         return idEtudiant;
