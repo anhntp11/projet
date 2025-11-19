@@ -1,11 +1,12 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
-import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
 import fr.orleans.m1s1miage.group4.backend.model.entity.InfoBU;
 import fr.orleans.m1s1miage.group4.backend.model.repository.InfoBURepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class InfoBUService {
     private final InfoBURepository infoBURepository;
 
@@ -23,7 +24,7 @@ public class InfoBUService {
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
      * @param infoBU L'infoBU a sauvegarder
      */
-    public void Save(InfoBU infoBU) {
+    public void save(InfoBU infoBU) {
         infoBURepository.save(infoBU);
     }
 

@@ -4,9 +4,11 @@ import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeRetour;
 import fr.orleans.m1s1miage.group4.backend.model.repository.DemandeEmpruntRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.DemandeRetourRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DemandeRetourService {
     private final DemandeRetourRepository demandeRetourRepository;
 

@@ -2,9 +2,11 @@ package fr.orleans.m1s1miage.group4.backend.model.service;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Notification;
 import fr.orleans.m1s1miage.group4.backend.model.repository.NotificationRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class NotificationService {
     private final NotificationRepository repo;
 
@@ -24,7 +26,7 @@ public class NotificationService {
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
      * @param notification La notification a sauvegarder
      */
-    public void Save(Notification notification) {
+    public void save(Notification notification) {
         repo.save(notification);
     }
 

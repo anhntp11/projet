@@ -16,7 +16,7 @@ public class AdministrateurService {
 
     /**
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
-     * @return La list de tous les genres sauvegardés en BD
+     * @return La list de tous les administrateurs sauvegardés en BD
      */
     public List<Administrateur> findAll() {
         return repo.findAll();
@@ -26,7 +26,7 @@ public class AdministrateurService {
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
      * @param administrateur L'administrateur à sauvegarder
      */
-    public void Save(Administrateur administrateur) {
+    public void save(Administrateur administrateur) {
         repo.save(administrateur);
     }
 

@@ -16,7 +16,7 @@ public class BUService {
 
     /**
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
-     * @return La list de tous les genres sauvegardés en BD
+     * @return La list de tous les bu sauvegardés en BD
      */
     public List<BU> findAll() {
         return repo.findAll();
@@ -26,7 +26,7 @@ public class BUService {
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
      * @param bu La BU à sauvegarder
      */
-    public void Save(BU bu) {
+    public void save(BU bu) {
         repo.save(bu);
     }
 

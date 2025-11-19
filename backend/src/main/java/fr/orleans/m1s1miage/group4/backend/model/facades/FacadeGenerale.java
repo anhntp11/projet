@@ -50,7 +50,7 @@ public interface FacadeGenerale {
      * @return l'objet Livre
      * @throws LivreInconnuException quand le livre n'est pas trouvé.
      */
-    public Livre getLivre(int idLivre)
+    public Livre getLivre(Long idLivre)
             throws LivreInconnuException;
 
     /**
@@ -66,6 +66,6 @@ public interface FacadeGenerale {
      * @return le texte d'information de la BU
      * @throws BuInconnueException quand la BU n'est pas trouvée
      */
-    public String infoBU(int idBu)
+    public String infoBU(Long idBu)
             throws BuInconnueException;
 }
