@@ -34,7 +34,7 @@ public class TestController {
         genre.setName("test"+rand);
         genre.setDescription("description");
 
-        genreService.Save(genre);
+        genreService.save(genre);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(genre.getName() + " - "+ genre.getDescription());
     }

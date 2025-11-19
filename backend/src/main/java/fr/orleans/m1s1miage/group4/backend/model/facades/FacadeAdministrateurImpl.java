@@ -5,9 +5,11 @@ import fr.orleans.m1s1miage.group4.backend.model.entity.*;
 import fr.orleans.m1s1miage.group4.backend.model.exception.*;
 import fr.orleans.m1s1miage.group4.backend.model.repository.BURepository;
 import fr.orleans.m1s1miage.group4.backend.model.service.BUService;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class FacadeAdministrateurImpl implements FacadeAdministrateur{
 
     private final BUService BUService;
