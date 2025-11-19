@@ -86,6 +86,5 @@ public class FacadeAdministrateurImpl implements FacadeAdministrateur{
     }
 
     public void creerBU(BUCreationDTO creationDTO) throws BuDejaExistateException {
-        BU bu =
     }
 }
