@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -33,11 +34,11 @@ public class TestLivreService {
      */
     @Test
     void findAllLivre(){
-        Livre livre1 = new Livre(1L, "Livre 1", "Anglais", "10-12-2005",
-                "Meow", LocalDateTime.now(), LocalDateTime.now(), 10);
+            Livre livre1 = new Livre("Livre 1", "Anglais", "Meow", 10);
+            livre1.setIdLivre(1L);
 
-        Livre livre2 = new Livre(2L, "Livre 2", "Francais", "05-10-2007",
-                "Meow", LocalDateTime.now(), LocalDateTime.now(), 7);
+            Livre livre2 = new Livre("Livre 2", "Francais", "Meow", 7);
+            livre2.setIdLivre(2L);
         when(livreRepository.findAll())
                 .thenReturn(Arrays.asList(livre1,livre2));
 
@@ -84,16 +85,12 @@ public class TestLivreService {
         Livre entree = new Livre();
         entree.setTitre("Livre 1");
         entree.setLangue("Anglais");
-        entree.setEditon("10-06-2019");
-        entree.setNomAuteur("Meow");
         entree.setStock(5);
 
         Livre sortir = new Livre();
         sortir.setIdLivre(20L);
         sortir.setTitre("Livre 1");
         sortir.setLangue("Anglais");
-        sortir.setEditon("10-06-2019");
-        sortir.setNomAuteur("Meow");
         sortir.setStock(5);
 
         when(livreRepository.save(any(Livre.class))).thenReturn(sortir);
@@ -112,8 +109,6 @@ public class TestLivreService {
         existant.setIdLivre(1L);
         existant.setTitre("Ancien Livre");
         existant.setLangue("Francais");
-        existant.setEditon("10-06-2019");
-        existant.setNomAuteur("Ancien Auteur");
         existant.setStock(10);
 
         when(livreRepository.findById(existant.getIdLivre()))
@@ -122,8 +117,6 @@ public class TestLivreService {
         Livre modifer = new Livre();
         modifer.setTitre("Nouveau titre");
         modifer.setLangue("Anglais");
-        modifer.setEditon("10-06-2024");
-        modifer.setNomAuteur("Nouveau Auteur");
         modifer.setStock(5);
 
         when(livreRepository.save(any(Livre.class)))
@@ -131,8 +124,6 @@ public class TestLivreService {
         Livre result = livreService.updateLivre(1L, modifer);
         assertEquals("Nouveau titre", result.getTitre());
         assertEquals("Anglais", result.getLangue());
-        assertEquals("10-06-2024", result.getEditon());
-        assertEquals("Nouveau Auteur", result.getNomAuteur());
         assertEquals(5, result.getStock());
 
         verify(livreRepository, times(1)).findById(1L);

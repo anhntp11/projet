@@ -2,6 +2,7 @@ package fr.orleans.m1s1miage.group4.backend.model.entity;
 
 import jakarta.persistence.*;
 
+import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,7 +57,11 @@ public class Livre extends BaseEntity {
 
     //getters setters
 
-    public Long getId() {
+    public void setIdLivre(Long id) {
+        this.idLivre = id;
+    }
+
+    public Long getIdLivre() {
         return idLivre;
     }
 
