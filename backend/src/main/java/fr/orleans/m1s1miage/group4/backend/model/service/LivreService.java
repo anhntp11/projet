@@ -1,10 +1,12 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -76,4 +78,53 @@ public class LivreService {
         return livreRepository.findById(idLivre)
                 .orElseThrow(LivreInconnuException::new);
     }
+
+    /**
+     * Permet de chercher un livre via son titre
+     *
+     */
+    public List<LivreDTO> chercherParTitre(String titre){
+        List<LivreDTO> list= livreRepository.findByTitreContainingIgnoreCase(titre).stream()
+                .map(LivreDTO::new).toList();
+        return list;
+    }
+
+    /**
+     * Permet de chercher un livre via son Auteur
+     */
+    public List<Livre> chercherParAuteur(String auteur){
+        return livreRepository.findByAuteurContainingIgnoreCase(auteur);
+    }
+
+    /**
+     * Permet de chercher un livre via son genre
+     */
+    public List<Livre> chercherParGenre(String genre){
+        return livreRepository.findByGenre(genre);
+    }
+
+
+    /**
+     * Fonction général pour la recherche de livre, par titre, auteur, genre
+     * Idée de filtre pour le front (pouvoir filtrer par titre, auteur ou genre)
+     */
+    public List<LivreDTO> rechercherLivres(String titre, String auteur, String genre) {
+
+        if (titre != null) {
+            return chercherParTitre(titre);
+        }
+        if (auteur != null) {
+            return chercherParAuteur(auteur)
+                    .stream().map(LivreDTO::new).toList();
+        }
+        if (genre != null) {
+            return chercherParGenre(genre)
+                    .stream().map(LivreDTO::new).toList();
+        }
+
+        // Sinon renvoyer tout
+        return livreRepository.findAll()
+                .stream().map(LivreDTO::new).toList();
+    }
+
 }

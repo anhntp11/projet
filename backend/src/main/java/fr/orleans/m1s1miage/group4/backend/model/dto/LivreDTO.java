@@ -1,5 +1,10 @@
 package fr.orleans.m1s1miage.group4.backend.model.dto;
 
+import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
+import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class LivreDTO {
@@ -9,13 +14,13 @@ public class LivreDTO {
     private String langue;
     private String auteur;
     private int stock;
-    private Set<Long> genreIds;
-    private Set<Long> buIds;
+    private List<Long> genreIds;
+    private List<Long> buIds;
 
     public LivreDTO() {}
 
     public LivreDTO(Long idLivre, String titre, String langue, String auteur, int stock,
-                    Set<Long> genreIds, Set<Long> buIds) {
+                    List<Long> genreIds, List<Long> buIds) {
         this.idLivre = idLivre;
         this.titre = titre;
         this.langue = langue;
@@ -23,6 +28,18 @@ public class LivreDTO {
         this.stock = stock;
         this.genreIds = genreIds;
         this.buIds = buIds;
+    }
+
+    public LivreDTO (Livre livre) {
+        this.idLivre = livre.getIdLivre();
+        this.titre = livre.getTitre();
+        this.auteur = livre.getAuteur();
+
+        List<Long> ids = new ArrayList<>();
+        for (Genre genre : livre.getGenres()){
+            ids.add(genre.getIdGenre());
+        }
+        this.genreIds = ids;
     }
 
     // Getters et setters
@@ -66,19 +83,19 @@ public class LivreDTO {
         this.stock = stock;
     }
 
-    public Set<Long> getGenreIds() {
+    public List<Long> getGenreIds() {
         return genreIds;
     }
 
-    public void setGenreIds(Set<Long> genreIds) {
+    public void setGenreIds(List<Long> genreIds) {
         this.genreIds = genreIds;
     }
 
-    public Set<Long> getBuIds() {
+    public List<Long> getBuIds() {
         return buIds;
     }
 
-    public void setBuIds(Set<Long> buIds) {
+    public void setBuIds(List<Long> buIds) {
         this.buIds = buIds;
     }
 }

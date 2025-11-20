@@ -1,0 +1,27 @@
+### Créé livre Harry Potter
+POST http://localhost:8080/api/livres
+Content-Type: application/json
+{
+  "titre": "Harry Potter à l'école des sorciers",
+  "auteur": "J.K. Rowling",
+  "genre": "Fantasy",
+  "annee": 1997
+}
+### Test livre bien créé
+GET http://localhost:8080/livres
+
+### Test recherche par titre
+GET http://localhost:8080/api/catalogue?titre=Harry
+Accept: application/json
+
+### Test recherche par auteur
+GET http://localhost:8080/api/catalogue?auteur=Rowling
+Accept: application/json
+
+### Test recherche par genre
+GET http://localhost:8080/api/catalogue?genre=Fantasy
+Accept: application/json
+
+### Test sans paramètre
+GET http://localhost:8080/api/catalogue
+Accept: application/json

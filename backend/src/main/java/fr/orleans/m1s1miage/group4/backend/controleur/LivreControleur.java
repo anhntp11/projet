@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/livres")
+@RequestMapping("/api/livres")
 public class LivreControleur {
     private final LivreService livreService;
 
@@ -39,6 +39,7 @@ public class LivreControleur {
     /**
      * GET /livres
      * recuperer un livre par son id
+     *
      */
     @GetMapping("/{idLivre}")
     public ResponseEntity<Livre> getLivreById(@PathVariable Long idLivre){
