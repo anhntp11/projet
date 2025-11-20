@@ -1,7 +1,11 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
+import fr.orleans.m1s1miage.group4.backend.model.service.EmpruntService;
 import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
+import org.springframework.security.core.Authentication;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -64,6 +68,16 @@ public class LivreControleur {
     public ResponseEntity<Void> deleteLivre(@PathVariable Long idLivre){
         livreService.deleteLivre(idLivre);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/livre/{idLivre}/emprunt")
+    public ResponseEntity<EmpruntDTO> emprunterLivre(
+            @PathVariable Long idLivre,
+            Authentication authentication) {
+
+        String emailEtudiant = authentication.getName();
+        EmpruntDTO emprunt = EmpruntService.EmprunterLivre(idLivre, emailEtudiant);
+
+        return ResponseEntity.ok(emprunt);
     }
 
 }
