@@ -16,8 +16,8 @@ public class BU extends BaseEntity {
     @Column(nullable = false)
     private String nom;
 
-    @OneToMany(mappedBy = "bu", cascade = CascadeType.ALL)
-    private Set<InfoBU> infos = new HashSet<>();
+    @OneToOne(mappedBy = "bu", cascade = CascadeType.ALL)
+    private InfoBU info;
 
     @ManyToMany(mappedBy = "bus")
     private Set<Livre> livres = new HashSet<>();
@@ -42,12 +42,12 @@ public class BU extends BaseEntity {
         return idBU;
     }
 
-    public Set<InfoBU> getInfos() {
-        return infos;
+    public InfoBU getInfos() {
+        return info;
     }
 
-    public void setInfos(Set<InfoBU> infos) {
-        this.infos = infos;
+    public void setInfos(InfoBU info) {
+        this.info = info;
     }
 
     public void setLivres(Set<Livre> livres) {

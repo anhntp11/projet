@@ -16,7 +16,7 @@ public class InfoBU extends BaseEntity {
     @Column(nullable = true)
     private String informations;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "bu_id")
     private BU bu;
 

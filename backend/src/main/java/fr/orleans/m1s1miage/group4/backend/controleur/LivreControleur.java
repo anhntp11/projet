@@ -1,7 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
-import fr.orleans.m1s1miage.group4.backend.model.facades.FacadeLivre;
+import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +10,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/livres")
-//@CrossOrigin
-
 public class LivreControleur {
-    private final FacadeLivre facadeLivre;
+    private final LivreService livreService;
 
-    public LivreControleur(FacadeLivre facadeLivre) {
-        this.facadeLivre = facadeLivre;
+    public LivreControleur(LivreService livreService) {
+        this.livreService = livreService;
     }
 
     /**
@@ -25,7 +23,7 @@ public class LivreControleur {
      */
     @PostMapping
     public ResponseEntity<Livre> createLivre(@RequestBody Livre livre){
-        Livre created = facadeLivre.createLivre(livre);
+        Livre created = livreService.createLivre(livre);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
@@ -35,7 +33,7 @@ public class LivreControleur {
      */
     @GetMapping
     public ResponseEntity<List<Livre>> getAllLivres(){
-        return ResponseEntity.ok(facadeLivre.getAllLivres());
+        return ResponseEntity.ok(livreService.findAll());
     }
 
     /**
@@ -44,7 +42,7 @@ public class LivreControleur {
      */
     @GetMapping("/{idLivre}")
     public ResponseEntity<Livre> getLivreById(@PathVariable Long idLivre){
-        return ResponseEntity.ok(facadeLivre.getLivre(idLivre));
+        return ResponseEntity.ok(livreService.getLivreById(idLivre));
     }
 
     /**
@@ -54,7 +52,7 @@ public class LivreControleur {
     @PutMapping("/{idLivre}")
     public ResponseEntity<Livre> updateLivre(@PathVariable Long idLivre,
                                              @RequestBody Livre livreModifie){
-        Livre updated = facadeLivre.updateLivre(idLivre, livreModifie);
+        Livre updated = livreService.updateLivre(idLivre, livreModifie);
         return ResponseEntity.ok(updated);
     }
 
@@ -63,7 +61,7 @@ public class LivreControleur {
      * Supprimer un livre
      */
     public ResponseEntity<Void> deleteLivre(@PathVariable Long idLivre){
-        facadeLivre.deleteLivre(idLivre);
+        livreService.deleteLivre(idLivre);
         return ResponseEntity.noContent().build();
     }
 
