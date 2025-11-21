@@ -16,7 +16,7 @@ Content-Type: application/json
   "nom" : "test2"
 }
 
-###Permet de récupérer les informations de la BU dont l'id est en body
+###Permet de récupérer les BU
 GET http://localhost:8080/api/bu
 Accept: application/json
 Content-Type: application/json
@@ -37,15 +37,10 @@ Content-Type: application/json
 }
 
 ###Permet de récupérer les informations de la BU dont l'id est en param
-GET http://localhost:8080/api/info?idBU=0
-Accept: application/json
-Content-Type: application/json
-
-
-###Permet de récupérer les informations de la BU dont l'id est en param
 GET http://localhost:8080/api/info?idBU=1
 Accept: application/json
 Content-Type: application/json
+
 
 ###Permet d'éditer des informations pour la BU dont l'id est en body
 PATCH http://localhost:8080/api/info/1
