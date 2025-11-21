@@ -11,6 +11,9 @@ public class DemandeRetourDTO extends DemandeDTO {
     private Long empruntId; // ID de l'emprunt associé
     private boolean estRenouvelle;
 
+    public DemandeRetourDTO() {
+    }
+
     // Constructeur par défaut
     public DemandeRetourDTO(Long idDemandeRetour, Long idEtudiant, LocalDateTime dateDemande, StatutEmprunt statutEmprunt, Administrateur approuverPar, LocalDateTime dateApprobationEmprunt, Long idEmprunt, boolean estRenouvelle) {}
 

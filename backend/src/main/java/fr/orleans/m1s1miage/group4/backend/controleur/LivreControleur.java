@@ -55,10 +55,10 @@ public class LivreControleur {
     }
 
     /**
-     * PutMapping ("/{idLivre}")
+     * PatchMapping ("/{idLivre}")
      * Modifier un livre existant
      */
-    @PutMapping("/{idLivre}")
+    @PatchMapping("/{idLivre}")
     public ResponseEntity<Livre> updateLivre(@PathVariable Long idLivre,
                                              @RequestBody Livre livreModifie){
         Livre updated = livreService.updateLivre(idLivre, livreModifie);

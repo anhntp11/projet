@@ -3,14 +3,17 @@ package fr.orleans.m1s1miage.group4.backend.model.dto.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 
 public class BUDTO {
-    private final Long id;
-    private final String nom;
-    private final Long idInfo;
+    private Long id;
+    private String nom;
+    private Long idInfo;
 
     public BUDTO(Long id, String nom, Long idInfo) {
         this.id = id;
         this.nom = nom;
         this.idInfo = idInfo;
+    }
+
+    public BUDTO() {
     }
 
     public BUDTO(BU bu) {
