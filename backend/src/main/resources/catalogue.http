@@ -42,3 +42,7 @@ Accept: application/json
 ### Test sans paramètre
 GET http://localhost:8080/api/catalogue
 Accept: application/json
+
+### Test récuperation du catalogue
+GET http://localhost:8080/api/catalogue/filtre
+

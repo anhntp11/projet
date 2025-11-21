@@ -1,5 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.CatalogueDTO;
 import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
 import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
@@ -162,5 +163,15 @@ public class LivreService {
         return livreRepository.findAll()
                 .stream().map(LivreDTO::new).toList();
     }
+
+    public CatalogueDTO getCatalogue() {
+        List<LivreDTO> livres = livreRepository.findAll()
+                .stream()
+                .map(LivreDTO::new)
+                .toList();
+
+        return new CatalogueDTO(livres);
+    }
+
 
 }
