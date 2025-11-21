@@ -16,7 +16,11 @@ public class BUDTO {
     public BUDTO(BU bu) {
         this.id = bu.getIdBU();
         this.nom = bu.getNom();
-        this.idInfo = bu.getInfos().getId();
+        if (bu.getInfos() != null) {
+            this.idInfo = bu.getInfos().getId();
+        } else {
+            this.idInfo = null;
+        }
     }
 
     public Long getId() {

@@ -34,6 +34,8 @@ public class LivreDTO {
     public LivreDTO (Livre livre) {
         this.idLivre = livre.getIdLivre();
         this.titre = livre.getTitre();
+        this.langue = livre.getLangue();
+        this.stock = livre.getStock();
         this.auteur = livre.getAuteur();
 
         List<Long> genreIds = new ArrayList<>();

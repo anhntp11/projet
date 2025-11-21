@@ -63,6 +63,7 @@ public class LivreService {
         livre.setTitre(creationDTO.getTitre());
         livre.setLangue(creationDTO.getLangue());
         livre.setAuteur(creationDTO.getAuteur());
+        livre.setStock(creationDTO.getStock());
 
         List<BU> bus = new ArrayList<>();
         for (Long id : creationDTO.getBuIds()){

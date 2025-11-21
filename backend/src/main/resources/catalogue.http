@@ -11,6 +11,19 @@ Content-Type: application/json
   "buIds": [1]
 }
 
+### Créé livre Le petit prince
+POST http://localhost:8080/api/livres
+Content-Type: application/json
+
+{
+  "titre": "Le petit prince",
+  "auteur": "Antoine de Saint Exuperi",
+  "langue": "francais",
+  "stock": 1,
+  "genreIds": [],
+  "buIds": [1]
+}
+
 ### Test livre bien créé
 GET http://localhost:8080/api/livres
 
