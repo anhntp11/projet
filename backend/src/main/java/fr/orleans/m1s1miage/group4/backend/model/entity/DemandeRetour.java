@@ -10,14 +10,11 @@ public class DemandeRetour extends DemandeAbstract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_DemandeRetour;
+
     private  String statutEmprunt;
 
     @ManyToOne
-    @JoinTable(
-            name = "emprunt",
-            joinColumns = @JoinColumn(name = "id_DemandeRetour"),
-            inverseJoinColumns = @JoinColumn(name = "id_Emprunt")
-    )
+    @JoinColumn(name = "id_emprunt", nullable = false)
     private Emprunt emprunt;
 
     private boolean est_renouvelle = false;

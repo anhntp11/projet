@@ -16,27 +16,15 @@ public class Emprunt extends BaseEntity {
     private Long id_Emprunt;
 
     @ManyToOne
-    @JoinTable(
-            name="etudiant",
-            joinColumns = @JoinColumn(name= "id_Emprunt"),
-            inverseJoinColumns = @JoinColumn(name= "id_Etudiant")
-    )
+    @JoinColumn(name = "id_etudiant", nullable = false)
     private Etudiant etudiant;
 
     @ManyToOne
-    @JoinTable(
-            name = "livre",
-            joinColumns = @JoinColumn(name = "id_Emprunt"),
-            inverseJoinColumns = @JoinColumn(name = "id-Livre")
-    )
+    @JoinColumn(name = "id_livre", nullable = false)
     private Livre livre;
 
     @ManyToOne
-    @JoinTable(
-            name = "bu_livre",
-            joinColumns = @JoinColumn(name = "id_Emprunt"),
-            inverseJoinColumns = @JoinColumn(name = "bu_id")
-    )
+    @JoinColumn(name = "id_bu", nullable = false)
     private BU bu;
 
     /**
@@ -57,11 +45,7 @@ public class Emprunt extends BaseEntity {
     private boolean est_renouvelle = false;
 
     @ManyToOne
-    @JoinTable(
-            name = "admin",
-            joinColumns = @JoinColumn(name = "id_Emprunt"),
-            inverseJoinColumns = @JoinColumn(name = "id_admin")
-    )
+    @JoinColumn(name = "id_admin")
     private Administrateur admin;
 
     // constructeurs

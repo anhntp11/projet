@@ -15,11 +15,7 @@ public class DemandeEmprunt extends DemandeAbstract {
 
 
     @ManyToOne
-    @JoinTable(
-            name = "livre",
-            joinColumns = @JoinColumn(name = "id_DemandeEmprunt"),
-            inverseJoinColumns = @JoinColumn(name = "id-Livre")
-    )
+    @JoinColumn(name = "id_livre", nullable = false)
     private Livre livre;
 
     // constructeurs

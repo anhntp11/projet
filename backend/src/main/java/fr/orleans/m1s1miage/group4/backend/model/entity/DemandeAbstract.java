@@ -7,11 +7,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class DemandeAbstract {
     @ManyToOne
-    @JoinTable(
-            name="etudiant",
-            joinColumns = @JoinColumn(name= "id_Demande"),
-            inverseJoinColumns = @JoinColumn(name= "id_Etudiant")
-    )
+    @JoinColumn(name = "id_etudiant", nullable = false)
     private Etudiant etudiant;
 
     @Column(nullable = false)
@@ -21,11 +17,7 @@ public class DemandeAbstract {
     private StatutEmprunt statutEmprunt;
 
     @ManyToOne
-    @JoinTable(
-            name = "admin",
-            joinColumns = @JoinColumn(name = "id_Demande"),
-            inverseJoinColumns = @JoinColumn(name = "id_admin")
-    )
+    @JoinColumn(name = "id_admin", nullable = false)
     private Administrateur approuverPar;
 
     @Column(nullable = false)
