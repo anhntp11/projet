@@ -1,10 +1,11 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
 import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 import fr.orleans.m1s1miage.group4.backend.model.service.EmpruntService;
 import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
-import org.springframework.security.core.Authentication;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +27,10 @@ public class LivreControleur {
      * creer un nouveau livre
      */
     @PostMapping
-    public ResponseEntity<Livre> createLivre(@RequestBody Livre livre){
-        Livre created = livreService.createLivre(livre);
+    public ResponseEntity<LivreDTO> createLivre(
+            @RequestBody LivreCreationDTO creationDTO
+    ){
+        LivreDTO created = livreService.createLivre(creationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
@@ -36,7 +39,7 @@ public class LivreControleur {
      * recuperer des livre
      */
     @GetMapping
-    public ResponseEntity<List<Livre>> getAllLivres(){
+    public ResponseEntity<List<LivreDTO>> getAllLivres(){
         return ResponseEntity.ok(livreService.findAll());
     }
 
@@ -47,7 +50,8 @@ public class LivreControleur {
      */
     @GetMapping("/{idLivre}")
     public ResponseEntity<Livre> getLivreById(@PathVariable Long idLivre){
-        return ResponseEntity.ok(livreService.getLivreById(idLivre));
+        Livre livre = livreService.getLivreById(idLivre);
+        return ResponseEntity.status(HttpStatus.OK).body(livre);
     }
 
     /**
@@ -65,16 +69,18 @@ public class LivreControleur {
      * DeleteMaping("/{idLivre}")
      * Supprimer un livre
      */
-    public ResponseEntity<Void> deleteLivre(@PathVariable Long idLivre){
+    public ResponseEntity<Void> deleteLivre(@PathVariable Long idLivre) {
         livreService.deleteLivre(idLivre);
         return ResponseEntity.noContent().build();
     }
+
+
     @PostMapping("/livre/{idLivre}/emprunt")
     public ResponseEntity<EmpruntDTO> emprunterLivre(
-            @PathVariable Long idLivre,
-            Authentication authentication) {
+            @PathVariable Long idLivre
+            ) {
 
-        String emailEtudiant = authentication.getName();
+        String emailEtudiant = "mail temporaire";
         EmpruntDTO emprunt = EmpruntService.EmprunterLivre(idLivre, emailEtudiant);
 
         return ResponseEntity.ok(emprunt);

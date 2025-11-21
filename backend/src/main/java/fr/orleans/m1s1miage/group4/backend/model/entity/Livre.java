@@ -1,9 +1,12 @@
 package fr.orleans.m1s1miage.group4.backend.model.entity;
 
+import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
 import jakarta.persistence.*;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -16,13 +19,17 @@ public class Livre extends BaseEntity {
     @Column(nullable = false)
     private String titre;
 
-    @Column()
+    @Column(nullable = true)
     private String langue;
 
     @Column(nullable = false)
     private String auteur;
+
+    /**
+     * Nombre d'unité en stock
+     */
     @Column(nullable = false)
-    private String genre;
+    private int stock;
 
     @ManyToMany
     @JoinTable(
@@ -30,7 +37,7 @@ public class Livre extends BaseEntity {
             joinColumns = @JoinColumn(name = "livre_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id")
     )
-    private Set<Genre> genres = new HashSet<>();
+    private List<Genre> genres = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -38,13 +45,8 @@ public class Livre extends BaseEntity {
             joinColumns = @JoinColumn(name = "livre_id"),
             inverseJoinColumns = @JoinColumn(name = "bu_id")
     )
-    private Set<BU> bus = new HashSet<>();
+    private List<BU> bus = new ArrayList<>();
 
-    /**
-     * Nombre d'unité en stock
-     */
-    @Column(nullable = false)
-    private int stock;
 
     // constructeurs
     public Livre() {
@@ -55,8 +57,6 @@ public class Livre extends BaseEntity {
         this.langue = langue;
         this.auteur = auteur;
         this.stock = stock;
-
-
     }
 
     //getters setters
@@ -101,19 +101,19 @@ public class Livre extends BaseEntity {
         this.stock = stock;
     }
 
-    public Set<Genre> getGenres() {
+    public List<Genre> getGenres() {
         return genres;
     }
 
-    public void setGenres(Set<Genre> genres) {
+    public void setGenres(List<Genre> genres) {
         this.genres = genres;
     }
 
-    public Set<BU> getBus() {
+    public List<BU> getBus() {
         return bus;
     }
 
-    public void setBus(Set<BU> bus) {
+    public void setBus(List<BU> bus) {
         this.bus = bus;
     }
 }

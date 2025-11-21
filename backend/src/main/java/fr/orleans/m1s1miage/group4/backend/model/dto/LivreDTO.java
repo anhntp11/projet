@@ -1,5 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.model.dto;
 
+import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 
@@ -35,11 +36,17 @@ public class LivreDTO {
         this.titre = livre.getTitre();
         this.auteur = livre.getAuteur();
 
-        List<Long> ids = new ArrayList<>();
+        List<Long> genreIds = new ArrayList<>();
         for (Genre genre : livre.getGenres()){
-            ids.add(genre.getIdGenre());
+            genreIds.add(genre.getIdGenre());
         }
-        this.genreIds = ids;
+        this.genreIds = genreIds;
+
+        List<Long> buIds = new ArrayList<>();
+        for (BU bu : livre.getBus()){
+            buIds.add(bu.getIdBU());
+        }
+        this.buIds = buIds;
     }
 
     // Getters et setters

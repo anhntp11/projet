@@ -13,7 +13,7 @@ public class BU extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idBU;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nom;
 
     @OneToOne(mappedBy = "bu", cascade = CascadeType.ALL)

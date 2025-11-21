@@ -1,5 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.model.dto;
 
+import fr.orleans.m1s1miage.group4.backend.model.entity.InfoBU;
+
 public class InfoBuDTO {
     private Long idInfoBU;
     private String nom;
@@ -15,6 +17,13 @@ public class InfoBuDTO {
         this.nom = nom;
         this.informations = informations;
         this.buId = buId;
+    }
+
+    public InfoBuDTO(InfoBU infoBU){
+        this.idInfoBU = infoBU.getId();
+        this.nom = infoBU.getNom();
+        this.informations = infoBU.getInformations();
+        this.buId = infoBU.getBu().getIdBU();
     }
 
     // Getters et setters

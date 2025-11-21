@@ -1,5 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.testService;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;
@@ -42,7 +44,7 @@ public class TestLivreService {
         when(livreRepository.findAll())
                 .thenReturn(Arrays.asList(livre1,livre2));
 
-        List<Livre> result = livreService.findAll();
+        List<LivreDTO> result = livreService.findAll();
         assertEquals(2, result.size());
         verify(livreRepository, times(1) ).findAll();
     }
@@ -82,9 +84,10 @@ public class TestLivreService {
      */
     @Test
     void TestAjouterLivre(){
-        Livre entree = new Livre();
+        LivreCreationDTO entree = new LivreCreationDTO();
         entree.setTitre("Livre 1");
         entree.setLangue("Anglais");
+        entree.setAuteur("Auteur");
         entree.setStock(5);
 
         Livre sortir = new Livre();
@@ -94,7 +97,7 @@ public class TestLivreService {
         sortir.setStock(5);
 
         when(livreRepository.save(any(Livre.class))).thenReturn(sortir);
-        Livre result = livreService.createLivre(entree);
+        LivreDTO result = livreService.createLivre(entree);
         assertNotNull(result.getIdLivre());
         assertEquals(20L, result.getIdLivre());
         verify(livreRepository, times(1)).save(any(Livre.class));

@@ -1,5 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.model.entity;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.infoBU.InfoBUCreationDTO;
 import jakarta.persistence.*;
 
 @Entity

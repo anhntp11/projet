@@ -1,6 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
+import fr.orleans.m1s1miage.group4.backend.model.exception.GenreInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.GenreRepository;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +32,6 @@ public class GenreService {
         genreRepository.save(genre);
     }
 
-
-
-
-
-
     /**
      * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
      */
@@ -43,4 +39,13 @@ public class GenreService {
         return genreRepository.findAll().get(0);
     }
 
+    /**
+     * Trouve un Genre via son id
+     * @param id l'id du genre
+     * @return le Genre recherché
+     * @throws GenreInconnuException si l'id n'est lié à aucun genre
+     */
+    public Genre findById(Long id) throws GenreInconnuException {
+        return genreRepository.findById(id).orElseThrow(GenreInconnuException::new);
+    }
 }

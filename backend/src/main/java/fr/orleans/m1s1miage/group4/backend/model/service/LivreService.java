@@ -1,21 +1,35 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
 import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
+import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
+import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
+import fr.orleans.m1s1miage.group4.backend.model.exception.BuInconnueException;
+import fr.orleans.m1s1miage.group4.backend.model.exception.GenreInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;
 import org.springframework.stereotype.Service;
 
 import javax.swing.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class LivreService {
     private final LivreRepository livreRepository;
+    private final BUService buService;
+    private final GenreService genreService;
 
-    public LivreService(LivreRepository livreRepository) {
+    public LivreService(
+            LivreRepository livreRepository,
+            BUService buService,
+            GenreService genreService
+    ) {
         this.livreRepository = livreRepository;
+        this.buService = buService;
+        this.genreService = genreService;
     }
 
     public void save(Livre livre) {
@@ -25,8 +39,11 @@ public class LivreService {
     /**
      * Récupérer tous les livres.
      */
-    public List<Livre> findAll() {
-        return livreRepository.findAll();
+    public List<LivreDTO> findAll() {
+        List<Livre> livres = livreRepository.findAll();
+        List<LivreDTO> dtos = livres.stream().map(LivreDTO::new).toList();
+        return dtos;
+
     }
 
     /**
@@ -40,13 +57,29 @@ public class LivreService {
 
     /**
      * Créer un nouveau livre.
-     * On met à null l'id pour forcer JPA à faire un insert.
      */
-    public Livre createLivre(Livre livre){
-//        livre.setIdLivre(null);
-//        livre.setTempsCreer(LocalDateTime.now());
-//        livre.setTempsMiseAJour(LocalDateTime.now());
-        return livreRepository.save(livre);
+    public LivreDTO createLivre(LivreCreationDTO creationDTO) throws BuInconnueException, GenreInconnuException {
+        Livre livre = new Livre();
+        livre.setTitre(creationDTO.getTitre());
+        livre.setLangue(creationDTO.getLangue());
+        livre.setAuteur(creationDTO.getAuteur());
+
+        List<BU> bus = new ArrayList<>();
+        for (Long id : creationDTO.getBuIds()){
+            BU bu = buService.findById(id);
+            bus.add(bu);
+        }
+        livre.setBus(bus);
+
+        List<Genre> genres = new ArrayList<>();
+        for (Long id : creationDTO.getGenreIds()){
+            Genre genre = genreService.findById(id);
+            genres.add(genre);
+        }
+        livre.setGenres(genres);
+
+        livreRepository.save(livre);
+        return new LivreDTO(livre);
     }
 
     /**
@@ -56,9 +89,6 @@ public class LivreService {
         Livre existant = findById(idLivre);
         existant.setTitre(livreModifie.getTitre());
         existant.setLangue(livreModifie.getLangue());
-//        existant.setEditon(livreModifie.getEditon());
-//        existant.setNomAuteur(livreModifie.getNomAuteur());
-//        existant.setTempsMiseAJour(LocalDateTime.now());
         existant.setStock(livreModifie.getStock());
 
         return livreRepository.save(existant);
@@ -74,7 +104,13 @@ public class LivreService {
         livreRepository.deleteById(idLivre);
     }
 
-    public Livre getLivreById(Long idLivre){
+    /**
+     * Recupere un livre avec son ID
+     * @param idLivre l'id du livre cherché
+     * @return Le livre cherché
+     * @throws LivreInconnuException si l'id donné n'appartient à aucun livre
+     */
+    public Livre getLivreById(Long idLivre) throws LivreInconnuException {
         return livreRepository.findById(idLivre)
                 .orElseThrow(LivreInconnuException::new);
     }
@@ -84,9 +120,8 @@ public class LivreService {
      *
      */
     public List<LivreDTO> chercherParTitre(String titre){
-        List<LivreDTO> list= livreRepository.findByTitreContainingIgnoreCase(titre).stream()
+        return livreRepository.findByTitreContainingIgnoreCase(titre).stream()
                 .map(LivreDTO::new).toList();
-        return list;
     }
 
     /**
