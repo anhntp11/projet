@@ -1,5 +1,8 @@
 package fr.orleans.m1s1miage.group4.backend.model.dto;
 
+import fr.orleans.m1s1miage.group4.backend.model.entity.Administrateur;
+import fr.orleans.m1s1miage.group4.backend.model.entity.StatutEmprunt;
+
 import java.time.LocalDateTime;
 
 public class DemandeEmpruntDTO extends  DemandeDTO {
@@ -7,7 +10,7 @@ public class DemandeEmpruntDTO extends  DemandeDTO {
     private Long livreId; // ID du livre associé
 
     // Constructeur par défaut
-    public DemandeEmpruntDTO() {}
+    public DemandeEmpruntDTO(Long idDemandeEmprunt, Long idEtudiant, LocalDateTime dateDemande, StatutEmprunt statutEmprunt, Administrateur approuverPar, LocalDateTime dateApprobationEmprunt, Long idLivre) {}
 
     // Constructeur complet
     public DemandeEmpruntDTO(Long idDemandeEmprunt, Long etudiantId, LocalDateTime dateDemande,

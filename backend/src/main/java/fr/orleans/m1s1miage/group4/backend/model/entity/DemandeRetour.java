@@ -10,6 +10,7 @@ public class DemandeRetour extends DemandeAbstract {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_DemandeRetour;
+    private  String statutEmprunt;
 
     @ManyToOne
     @JoinTable(
@@ -30,7 +31,7 @@ public class DemandeRetour extends DemandeAbstract {
         this.id_DemandeRetour = id_DemandeRetour;
         this.emprunt = emprunt;
         this.est_renouvelle = est_renouvelle;
-    }
+        }
 
     /// getters et setters
 
@@ -54,4 +55,10 @@ public class DemandeRetour extends DemandeAbstract {
     public void setEst_renouvelle(boolean est_renouvelle) {
         this.est_renouvelle = est_renouvelle;
     }
+    public void setStatut_Emprunt() {
+
+            super.setStatutEmprunt(StatutEmprunt.RENDU);
+    }
+
+
 }

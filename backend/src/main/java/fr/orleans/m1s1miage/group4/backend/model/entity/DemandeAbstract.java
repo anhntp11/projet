@@ -18,7 +18,7 @@ public class DemandeAbstract {
     private LocalDateTime dateDemande;
 
     @Column(nullable = false)
-    private StatutEmprunt statut_Emprunt;
+    private StatutEmprunt statutEmprunt;
 
     @ManyToOne
     @JoinTable(
@@ -40,7 +40,7 @@ public class DemandeAbstract {
                            LocalDateTime dateApprobationEmprunt) {
         this.etudiant = etudiant;
         this.dateDemande = dateDemande;
-        this.statut_Emprunt = statut_Emprunt;
+        this.statutEmprunt = statut_Emprunt;
         this.approuverPar = approuverPar;
         this.dateApprobationEmprunt = dateApprobationEmprunt;
     }
@@ -63,11 +63,11 @@ public class DemandeAbstract {
     }
 
     public StatutEmprunt getStatut_Emprunt() {
-        return statut_Emprunt;
+        return statutEmprunt;
     }
 
     public void setStatut_Emprunt(StatutEmprunt statut_Emprunt) {
-        this.statut_Emprunt = statut_Emprunt;
+        this.statutEmprunt = statut_Emprunt;
     }
 
     public Administrateur getApprouverPar() {
@@ -85,4 +85,8 @@ public class DemandeAbstract {
     public void setDateApprobationEmprunt(LocalDateTime dateApprobationEmprunt) {
         this.dateApprobationEmprunt = dateApprobationEmprunt;
     }
+    public void setStatutEmprunt(StatutEmprunt statut) {
+        this.statutEmprunt = statut;
+    }
+
 }

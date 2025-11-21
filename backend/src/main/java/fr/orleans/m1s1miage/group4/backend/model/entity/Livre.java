@@ -21,6 +21,8 @@ public class Livre extends BaseEntity {
 
     @Column(nullable = false)
     private String auteur;
+    @Column(nullable = false)
+    private String genre;
 
     @ManyToMany
     @JoinTable(
@@ -53,6 +55,8 @@ public class Livre extends BaseEntity {
         this.langue = langue;
         this.auteur = auteur;
         this.stock = stock;
+
+
     }
 
     //getters setters

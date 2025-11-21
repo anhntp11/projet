@@ -2,6 +2,7 @@ package fr.orleans.m1s1miage.group4.backend.model.service;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Emprunt;
+import fr.orleans.m1s1miage.group4.backend.model.entity.StatutEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.repository.DemandeEmpruntRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EmpruntRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,19 @@ public class DemandeEmpruntService {
      */
     public void save(DemandeEmprunt demandeEmprunt) {
         demandeEmpruntRepository.save(demandeEmprunt);
+    }
+
+    public DemandeEmprunt validerDemande(Long id) {
+        DemandeEmprunt demande = demandeEmpruntRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Demande non trouvée"));
+        demande.setStatut_Emprunt(StatutEmprunt.EMPRUNTER);
+        return demandeEmpruntRepository.save(demande);
+    }
+
+    public DemandeEmprunt rejeterDemande(Long id) {
+        DemandeEmprunt demande = demandeEmpruntRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Demande non trouvée"));
+        demande.setStatut_Emprunt(StatutEmprunt.RENDU);
+        return demandeEmpruntRepository.save(demande);
     }
 }

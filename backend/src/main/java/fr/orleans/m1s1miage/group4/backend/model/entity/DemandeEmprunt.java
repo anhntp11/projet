@@ -13,6 +13,7 @@ public class DemandeEmprunt extends DemandeAbstract {
     private Long id_DemandeEmprunt;
 
 
+
     @ManyToOne
     @JoinTable(
             name = "livre",
@@ -44,5 +45,8 @@ public class DemandeEmprunt extends DemandeAbstract {
     public void setLivre(Livre livre) {
         this.livre = livre;
     }
+    public void setStatut_Emprunt() {
 
+        super.setStatutEmprunt(StatutEmprunt.EMPRUNTER);
+    }
 }

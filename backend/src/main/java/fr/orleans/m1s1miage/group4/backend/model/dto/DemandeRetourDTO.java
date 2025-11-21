@@ -1,5 +1,8 @@
 package fr.orleans.m1s1miage.group4.backend.model.dto;
 
+import fr.orleans.m1s1miage.group4.backend.model.entity.Administrateur;
+import fr.orleans.m1s1miage.group4.backend.model.entity.StatutEmprunt;
+
 import java.time.LocalDateTime;
 
 public class DemandeRetourDTO extends DemandeDTO {
@@ -9,7 +12,7 @@ public class DemandeRetourDTO extends DemandeDTO {
     private boolean estRenouvelle;
 
     // Constructeur par défaut
-    public DemandeRetourDTO() {}
+    public DemandeRetourDTO(Long idDemandeRetour, Long idEtudiant, LocalDateTime dateDemande, StatutEmprunt statutEmprunt, Administrateur approuverPar, LocalDateTime dateApprobationEmprunt, Long idEmprunt, boolean estRenouvelle) {}
 
     // Constructeur complet
     public DemandeRetourDTO(Long idDemandeRetour, Long etudiantId, LocalDateTime dateDemande,
