@@ -38,4 +38,13 @@ public class infoBUControleur {
 
         return ResponseEntity.status(HttpStatus.CREATED).body(infoBuDTO);
     }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<InfoBuDTO> updateInfo(
+            @RequestBody InfoBUCreationDTO editDTO,
+            @PathVariable Long id
+    ) {
+        InfoBuDTO newDTO = infoBUService.editInfo(id, editDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(newDTO);
+    }
 }

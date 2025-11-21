@@ -1,10 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
 import fr.orleans.m1s1miage.group4.backend.model.dto.ErrorDTO;
-import fr.orleans.m1s1miage.group4.backend.model.exception.BuDejaExistanteException;
-import fr.orleans.m1s1miage.group4.backend.model.exception.BuInconnueException;
-import fr.orleans.m1s1miage.group4.backend.model.exception.GenreInconnuException;
-import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
+import fr.orleans.m1s1miage.group4.backend.model.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -45,4 +42,11 @@ public class GlobalExceptionHandler {
         HttpStatus status = HttpStatus.NOT_FOUND;
         return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
     }
+
+    @ExceptionHandler(InformationBUInconnueException.class)
+    public ResponseEntity<ErrorDTO> informationBUInconnueException(InformationBUInconnueException e) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
+    }
+
 }

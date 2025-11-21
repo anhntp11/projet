@@ -10,13 +10,13 @@ public class infoBUDTO {
     public infoBUDTO() {}
 
     public infoBUDTO(InfoBU infoBU) {
-        this.id=infoBU.getId();
+        this.id = infoBU.getId();
         this.informations=infoBU.getInformations();
         this.nom =infoBU.getNom();
     }
 
-    public infoBUDTO(String inforamtions, String nom, Long id) {
-        this.informations = inforamtions;
+    public infoBUDTO(String informations, String nom, Long id) {
+        this.informations = informations;
         this.nom = nom;
         this.id = id;
     }

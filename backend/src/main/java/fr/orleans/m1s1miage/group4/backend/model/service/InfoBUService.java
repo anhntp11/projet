@@ -5,6 +5,7 @@ import fr.orleans.m1s1miage.group4.backend.model.dto.infoBU.InfoBUCreationDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.InfoBU;
 import fr.orleans.m1s1miage.group4.backend.model.exception.BuInconnueException;
+import fr.orleans.m1s1miage.group4.backend.model.exception.InformationBUInconnueException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.InfoBURepository;
 import org.springframework.stereotype.Service;
 
@@ -53,6 +54,18 @@ public class InfoBUService {
         BU bu = buService.findById(creationDTO.getIdBu());
         infoBU.setBu(bu);
         bu.setInfos(infoBU);
+        infoBURepository.save(infoBU);
+
+        return new InfoBuDTO(infoBU);
+    }
+
+
+    public InfoBuDTO editInfo(Long idInfo, InfoBUCreationDTO editDTO) throws InformationBUInconnueException, BuInconnueException{
+        InfoBU infoBU = infoBURepository.findById(idInfo).orElseThrow(InformationBUInconnueException::new);
+        infoBU.setInformations(editDTO.getInformations());
+        infoBU.setNom(editDTO.getNom());
+        BU bu = buService.findById(editDTO.getIdBu());
+        infoBU.setBu(bu);
         infoBURepository.save(infoBU);
 
         return new InfoBuDTO(infoBU);

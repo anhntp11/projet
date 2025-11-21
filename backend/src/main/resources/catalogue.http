@@ -28,15 +28,15 @@ Content-Type: application/json
 GET http://localhost:8080/api/livres
 
 ### Test recherche par titre
-GET http://localhost:8080/api/catalogue?titre=Harry
+GET http://localhost:8080/api/catalogue/filtre?titre=Harry
 Accept: application/json
 
 ### Test recherche par auteur
-GET http://localhost:8080/api/catalogue?auteur=Rowling
+GET http://localhost:8080/api/catalogue/filtre?auteur=Rowling
 Accept: application/json
 
 ### Test recherche par genre
-GET http://localhost:8080/api/catalogue?genre=Fantasy
+GET http://localhost:8080/api/catalogue/filtre?genre=Fantasy
 Accept: application/json
 
 ### Test sans paramètre
@@ -45,4 +45,3 @@ Accept: application/json
 
 ### Test récuperation du catalogue
 GET http://localhost:8080/api/catalogue/filtre
-
