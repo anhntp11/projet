@@ -27,8 +27,7 @@ public class LivreControleur {
      * creer un nouveau livre
      */
     @PostMapping
-    public ResponseEntity<LivreDTO> createLivre(
-            @RequestBody LivreCreationDTO creationDTO
+    public ResponseEntity<LivreDTO> createLivre(@RequestBody LivreCreationDTO creationDTO
     ){
         LivreDTO created = livreService.createLivre(creationDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
@@ -40,7 +39,7 @@ public class LivreControleur {
      */
     @GetMapping
     public ResponseEntity<List<LivreDTO>> getAllLivres(){
-        return ResponseEntity.ok(livreService.findAll());
+        return ResponseEntity.status(HttpStatus.OK).body(livreService.findAll());
     }
 
     /**
@@ -49,8 +48,8 @@ public class LivreControleur {
      *
      */
     @GetMapping("/{idLivre}")
-    public ResponseEntity<Livre> getLivreById(@PathVariable Long idLivre){
-        Livre livre = livreService.getLivreById(idLivre);
+    public ResponseEntity<LivreDTO> getLivreById(@PathVariable Long idLivre){
+        LivreDTO livre = livreService.getLivreById(idLivre);
         return ResponseEntity.status(HttpStatus.OK).body(livre);
     }
 
@@ -59,22 +58,27 @@ public class LivreControleur {
      * Modifier un livre existant
      */
     @PatchMapping("/{idLivre}")
-    public ResponseEntity<Livre> updateLivre(@PathVariable Long idLivre,
-                                             @RequestBody Livre livreModifie){
-        Livre updated = livreService.updateLivre(idLivre, livreModifie);
-        return ResponseEntity.ok(updated);
+    public ResponseEntity<LivreDTO> updateLivre(@PathVariable Long idLivre,
+                                             @RequestBody LivreCreationDTO livreModifie){
+        LivreDTO updated = livreService.updateLivre(idLivre, livreModifie);
+        return ResponseEntity.status(HttpStatus.OK).body(updated);
     }
 
     /**
      * DeleteMaping("/{idLivre}")
      * Supprimer un livre
      */
+    @DeleteMapping("/{idLivre}")
     public ResponseEntity<Void> deleteLivre(@PathVariable Long idLivre) {
         livreService.deleteLivre(idLivre);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.noContent().build(); //TODO
     }
 
-
+    /**
+     * PostMapping("/livre/{idLivre}/emprunt")
+     * @param idLivre id du livre
+     * @return Une reponse avec le DTO de l'emprunt cherché
+     */
     @PostMapping("/livre/{idLivre}/emprunt")
     public ResponseEntity<EmpruntDTO> emprunterLivre(
             @PathVariable Long idLivre

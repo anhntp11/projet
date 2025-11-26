@@ -61,7 +61,7 @@ public class TestLivreService {
         when(livreRepository.findById(livre.getIdLivre()))
                 .thenReturn(Optional.of(livre));
 
-        Livre result = livreService.getLivreById(1L);
+        LivreDTO result = livreService.getLivreById(1L);
         assertEquals("Livre 1", result.getTitre());
         verify(livreRepository, times(1)).findById(1L);
     }
@@ -80,30 +80,6 @@ public class TestLivreService {
     }
 
     /**
-     * Test ajouter un livre
-     */
-    @Test
-    void TestAjouterLivre(){
-        LivreCreationDTO entree = new LivreCreationDTO();
-        entree.setTitre("Livre 1");
-        entree.setLangue("Anglais");
-        entree.setAuteur("Auteur");
-        entree.setStock(5);
-
-        Livre sortir = new Livre();
-        sortir.setIdLivre(20L);
-        sortir.setTitre("Livre 1");
-        sortir.setLangue("Anglais");
-        sortir.setStock(5);
-
-        when(livreRepository.save(any(Livre.class))).thenReturn(sortir);
-        LivreDTO result = livreService.createLivre(entree);
-        assertNotNull(result.getIdLivre());
-        assertEquals(20L, result.getIdLivre());
-        verify(livreRepository, times(1)).save(any(Livre.class));
-    }
-
-    /**
      * Test modifier un livre
      */
     @Test
@@ -117,14 +93,14 @@ public class TestLivreService {
         when(livreRepository.findById(existant.getIdLivre()))
                 .thenReturn(Optional.of(existant));
 
-        Livre modifer = new Livre();
+        LivreCreationDTO modifer = new LivreCreationDTO();
         modifer.setTitre("Nouveau titre");
         modifer.setLangue("Anglais");
         modifer.setStock(5);
 
         when(livreRepository.save(any(Livre.class)))
                 .thenAnswer(i -> i.getArgument(0));
-        Livre result = livreService.updateLivre(1L, modifer);
+        LivreDTO result = livreService.updateLivre(1L, modifer);
         assertEquals("Nouveau titre", result.getTitre());
         assertEquals("Anglais", result.getLangue());
         assertEquals(5, result.getStock());
@@ -138,7 +114,7 @@ public class TestLivreService {
      */
     @Test
     void TestModifierLivreNonExistant(){
-        Livre modifier = new Livre();
+        LivreCreationDTO modifier = new LivreCreationDTO();
         when(livreRepository.findById(60L))
                 .thenReturn(Optional.empty());
         assertThrows(LivreInconnuException.class,

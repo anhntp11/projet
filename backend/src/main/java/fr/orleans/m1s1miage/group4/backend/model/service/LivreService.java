@@ -39,17 +39,17 @@ public class LivreService {
 
     /**
      * Récupérer tous les livres.
+     * @return une liste avec tous les livres au format DTO
      */
     public List<LivreDTO> findAll() {
         List<Livre> livres = livreRepository.findAll();
-        List<LivreDTO> dtos = livres.stream().map(LivreDTO::new).toList();
-        return dtos;
+        return livres.stream().map(LivreDTO::new).toList();
 
     }
 
     /**
      * Récupérer un livre par son id.
-     * @throws LivreInconnuException si aucun livre ne correcspond a l'id
+     * @throws LivreInconnuException si aucun livre ne correspond à l'id
      */
     public Livre findById(Long idLivre){
         return livreRepository.findById(idLivre)
@@ -57,47 +57,62 @@ public class LivreService {
     }
 
     /**
-     * Créer un nouveau livre.
+     * Methode qui facilite le remplissage des champs d'un livre avec le contenu du DTO qui est lié, que ce soit pour la création ou pour l'edition.
+     * @param livre Livre à remplir (nouveau ou celui à éditer)
+     * @param ajout Dto du livre avec les infos à inscrire dans le livre
+     * @return l'objet Livre complété.
      */
-    public LivreDTO createLivre(LivreCreationDTO creationDTO) throws BuInconnueException, GenreInconnuException {
-        Livre livre = new Livre();
-        livre.setTitre(creationDTO.getTitre());
-        livre.setLangue(creationDTO.getLangue());
-        livre.setAuteur(creationDTO.getAuteur());
-        livre.setStock(creationDTO.getStock());
-
+    private Livre remplirLivre(Livre livre, LivreCreationDTO ajout){
+        livre.setTitre(ajout.getTitre());
+        livre.setLangue(ajout.getLangue());
+        livre.setAuteur(ajout.getAuteur());
+        livre.setStock(ajout.getStock());
         List<BU> bus = new ArrayList<>();
-        for (Long id : creationDTO.getBuIds()){
+        for (Long id : ajout.getBuIds()){
             BU bu = buService.findById(id);
             bus.add(bu);
         }
         livre.setBus(bus);
-
         List<Genre> genres = new ArrayList<>();
-        for (Long id : creationDTO.getGenreIds()){
+        for (Long id : ajout.getGenreIds()){
             Genre genre = genreService.findById(id);
             genres.add(genre);
         }
         livre.setGenres(genres);
+        return livre;
+    }
+
+    /**
+     * Créer un nouveau livre.
+     * @param creationDTO Dto du nouveau livre
+     * @return Un LivreDTO avec le contenu du livre nouvellement créé
+     * @throws BuInconnueException si la BU n'est pas trouvé
+     * @throws GenreInconnuException si le genre n'est pas trouvé
+     */
+    public LivreDTO createLivre(LivreCreationDTO creationDTO) throws BuInconnueException, GenreInconnuException {
+        Livre livre = remplirLivre(new Livre(), creationDTO);
 
         livreRepository.save(livre);
         return new LivreDTO(livre);
     }
 
     /**
-     * Mettre a jour un livre existant
+     * Mettre à jour un livre existant
+     * @param idLivre l'id du livre a update
+     * @param livreModifie le DTO avec les modifications a effectué
+     * @return Le LivreDTO de l'objet modifié
      */
-    public Livre updateLivre(Long idLivre, Livre livreModifie) {
-        Livre existant = findById(idLivre);
-        existant.setTitre(livreModifie.getTitre());
-        existant.setLangue(livreModifie.getLangue());
-        existant.setStock(livreModifie.getStock());
+    public LivreDTO updateLivre(Long idLivre, LivreCreationDTO livreModifie) {
+        Livre existant = remplirLivre(findById(idLivre), livreModifie);
 
-        return livreRepository.save(existant);
+        livreRepository.save(existant);
+        return new LivreDTO(existant);
     }
 
     /**
      * Supprimer un livre.
+     * @param idLivre l'id du Livre à supprimer
+     * @throws LivreInconnuException si le Livre n'est pas trouvé
      */
     public void deleteLivre(Long idLivre) throws LivreInconnuException {
         if (!livreRepository.existsById(idLivre)) {
@@ -107,19 +122,20 @@ public class LivreService {
     }
 
     /**
-     * Recupere un livre avec son ID
+     * Recupère un livre avec son ID
      * @param idLivre l'id du livre cherché
      * @return Le livre cherché
      * @throws LivreInconnuException si l'id donné n'appartient à aucun livre
      */
-    public Livre getLivreById(Long idLivre) throws LivreInconnuException {
-        return livreRepository.findById(idLivre)
-                .orElseThrow(LivreInconnuException::new);
+    public LivreDTO getLivreById(Long idLivre) throws LivreInconnuException {
+        return new LivreDTO(livreRepository.findById(idLivre)
+                .orElseThrow(LivreInconnuException::new));
     }
 
     /**
      * Permet de chercher un livre via son titre
-     *
+     * @param titre titre du livre
+     * @return Une liste de LivreDTO correspondant à la recherche
      */
     public List<LivreDTO> chercherParTitre(String titre){
         return livreRepository.findByTitreContainingIgnoreCase(titre).stream()
@@ -128,22 +144,31 @@ public class LivreService {
 
     /**
      * Permet de chercher un livre via son Auteur
+     * @param auteur nom de l'auteur du Livre
+     * @return Une liste de LivreDTO correspondant à la recherche
      */
-    public List<Livre> chercherParAuteur(String auteur){
-        return livreRepository.findByAuteurContainingIgnoreCase(auteur);
+    public List<LivreDTO> chercherParAuteur(String auteur){
+        return livreRepository.findByAuteurContainingIgnoreCase(auteur).stream()
+                .map(LivreDTO::new).toList();
     }
 
     /**
      * Permet de chercher un livre via son genre
+     * @param genre Genre du livre
+     * @return Une Liste de
      */
-    public List<Livre> chercherParGenre(String genre){
-        return livreRepository.findByGenre(genre);
+    public List<LivreDTO> chercherParGenre(String genre){
+        return livreRepository.findByGenre(genre).stream().map(LivreDTO::new).toList();
     }
 
 
     /**
      * Fonction général pour la recherche de livre, par titre, auteur, genre
      * Idée de filtre pour le front (pouvoir filtrer par titre, auteur ou genre)
+     * @param titre Titre du livre
+     * @param auteur Auteur du livre
+     * @param genre Genre du livre
+     * @return Une liste de LivreDTO des livres trouvés
      */
     public List<LivreDTO> rechercherLivres(String titre, String auteur, String genre) {
 
@@ -151,12 +176,10 @@ public class LivreService {
             return chercherParTitre(titre);
         }
         if (auteur != null) {
-            return chercherParAuteur(auteur)
-                    .stream().map(LivreDTO::new).toList();
+            return chercherParAuteur(auteur);
         }
         if (genre != null) {
-            return chercherParGenre(genre)
-                    .stream().map(LivreDTO::new).toList();
+            return chercherParGenre(genre);
         }
 
         // Sinon renvoyer tout
@@ -164,6 +187,10 @@ public class LivreService {
                 .stream().map(LivreDTO::new).toList();
     }
 
+    /**
+     * Recupère le catalogue
+     * @return Un CatalogueDTO du catalogue
+     */
     public CatalogueDTO getCatalogue() {
         List<LivreDTO> livres = livreRepository.findAll()
                 .stream()
