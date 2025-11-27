@@ -1,7 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.testService;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreCreationDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;
@@ -12,11 +12,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;

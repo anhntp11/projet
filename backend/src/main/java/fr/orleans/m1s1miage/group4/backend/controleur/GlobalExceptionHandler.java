@@ -1,6 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.ErrorDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.error.ErrorDTO;
 import fr.orleans.m1s1miage.group4.backend.model.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

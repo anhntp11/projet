@@ -1,8 +1,8 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.CatalogueDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.catalogue.CatalogueDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreCreationDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
@@ -12,8 +12,6 @@ import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

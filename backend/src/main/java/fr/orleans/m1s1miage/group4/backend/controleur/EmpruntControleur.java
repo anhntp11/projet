@@ -1,9 +1,8 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.emprunt.EmpruntDTO;
 import fr.orleans.m1s1miage.group4.backend.model.service.EmpruntService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
