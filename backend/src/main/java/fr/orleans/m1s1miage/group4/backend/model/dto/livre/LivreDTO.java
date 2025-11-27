@@ -1,4 +1,4 @@
-package fr.orleans.m1s1miage.group4.backend.model.dto;
+package fr.orleans.m1s1miage.group4.backend.model.dto.livre;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;
@@ -6,7 +6,6 @@ import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class LivreDTO {
 

@@ -1,10 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreCreationDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
-import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
-import fr.orleans.m1s1miage.group4.backend.model.service.EmpruntService;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreCreationDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
 
 import org.springframework.http.HttpStatus;
