@@ -35,19 +35,24 @@ public class InfoBUService {
 
     /**
      * Recupere les info d'une BU grace a son id
-     * @param idBu l'id de la BU pour laquel on veut les infos
+     * @param idBu l'id de la BU pour laquelle on veut les infos
      * @return le DTO de l'info cherchée
      * @throws BuInconnueException si aucune BU n'a été trouvé avec l'idBU donné
      */
     public InfoBuDTO getInfoBUDtoByBUId(Long idBu) throws BuInconnueException {
-        return new InfoBuDTO(infoBURepository.findByBuIdBU(idBu));
+        InfoBU info = infoBURepository.findByBuIdBU(idBu);
+        if (info == null) {
+            throw new BuInconnueException();
+        }
+        return new InfoBuDTO(
+        );
     }
 
     /**
-     * Suavegarde en BD les info d'une BU
+     * Sauvegarde en BD les info d'une BU
      * @param creationDTO le DTO de creation de l'information
      * @return un DTO de l'info créé
-     * @throws BuInconnueException si l'id de la BU fourni dans le DTO de creation n'appartient a aucune BU
+     * @throws BuInconnueException si l'id de la BU fournie dans le DTO de creation n'appartient a aucune BU
      */
     public InfoBuDTO createInfoBU(InfoBUCreationDTO creationDTO) throws BuInconnueException {
         InfoBU infoBU = new InfoBU(creationDTO.getInformations(), creationDTO.getNom());

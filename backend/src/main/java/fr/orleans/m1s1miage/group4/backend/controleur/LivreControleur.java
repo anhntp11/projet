@@ -74,20 +74,4 @@ public class LivreControleur {
         return ResponseEntity.noContent().build(); //TODO
     }
 
-    /**
-     * PostMapping("/livre/{idLivre}/emprunt")
-     * @param idLivre id du livre
-     * @return Une reponse avec le DTO de l'emprunt cherché
-     */
-    @PostMapping("/livre/{idLivre}/emprunt")
-    public ResponseEntity<EmpruntDTO> emprunterLivre(
-            @PathVariable Long idLivre
-            ) {
-
-        String emailEtudiant = "mail temporaire";
-        EmpruntDTO emprunt = EmpruntService.EmprunterLivre(idLivre, emailEtudiant);
-
-        return ResponseEntity.ok(emprunt);
-    }
-
 }

@@ -49,4 +49,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
     }
 
+    @ExceptionHandler(EtudiantInconnuException.class)
+    public ResponseEntity<ErrorDTO> etudiantInconnuException(EtudiantInconnuException e) {
+        HttpStatus status = HttpStatus.NOT_FOUND;
+        return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
+    }
+
 }

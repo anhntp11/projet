@@ -1,8 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.testService;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Emprunt;
-import fr.orleans.m1s1miage.group4.backend.model.entity.Etudiant;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EmpruntRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EtudiantRepository;
@@ -95,7 +93,7 @@ public class TestEmpruntService {
     void testEmprunterLivreLivreIntrouvable() {
         when(livreRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(RuntimeException.class,
-                () -> EmpruntService.EmprunterLivre(1L, "etu@test.fr"));
+                () -> empruntService.emprunterLivre(1L, "etu@test.fr"));
         verify(livreRepository).findById(1L);
         verifyNoMoreInteractions(empruntRepository, etudiantRepository);
     }
@@ -108,7 +106,7 @@ public class TestEmpruntService {
         when(livreRepository.findById(1L)).thenReturn(Optional.of(livre));
 
         assertThrows(RuntimeException.class,
-                () -> EmpruntService.EmprunterLivre(1L, "etu@test.fr"));
+                () -> empruntService.emprunterLivre(1L, "etu@test.fr"));
 
         verify(livreRepository).findById(1L);
         verifyNoMoreInteractions(empruntRepository, etudiantRepository);
@@ -123,7 +121,7 @@ public class TestEmpruntService {
         when(etudiantRepository.findByEmail("etu@test.fr"))
                 .thenReturn(Optional.empty());
         assertThrows(RuntimeException.class,
-                () -> EmpruntService.EmprunterLivre(1L, "etu@test.fr"));
+                () -> empruntService.emprunterLivre(1L, "etu@test.fr"));
         verify(livreRepository).findById(1L);
         verify(etudiantRepository).findByEmail("etu@test.fr");
         verify(empruntRepository, never()).save(any());

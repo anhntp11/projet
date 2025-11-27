@@ -4,6 +4,9 @@ import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Emprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Etudiant;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
+import fr.orleans.m1s1miage.group4.backend.model.exception.EtudiantInconnuException;
+import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
+import fr.orleans.m1s1miage.group4.backend.model.exception.LivrePlusEnStockException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EmpruntRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EtudiantRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;
@@ -46,17 +49,14 @@ public class EmpruntService {
         empruntRepository.save(emprunt);
     }
     // Méthode static pour emprunter un livre
-    public static EmpruntDTO EmprunterLivre(Long idLivre, String emailEtudiant) {
+    public EmpruntDTO emprunterLivre(Long idLivre, String emailEtudiant)
+            throws EtudiantInconnuException, LivreInconnuException {
 
         Livre livre = staticLivreRepository.findById(idLivre)
-                .orElseThrow(() -> new RuntimeException("Livre introuvable"));
-
-        if (livre.getStock() <= 0) {
-            throw new RuntimeException("Le livre n'est plus disponible");
-        }
+                .orElseThrow(LivreInconnuException::new);
 
         Etudiant etudiant = staticEtudiantRepository.findByEmail(emailEtudiant)
-                .orElseThrow(() -> new RuntimeException("Étudiant introuvable"));
+                .orElseThrow(EtudiantInconnuException::new);
 
         Emprunt emprunt = new Emprunt();
         emprunt.setLivre(livre);
@@ -65,10 +65,6 @@ public class EmpruntService {
 
         // Sauvegarde dans la base
         staticEmpruntRepository.save(emprunt);
-
-        // Décrément du stock
-        livre.setStock(livre.getStock() - 1);
-        staticLivreRepository.save(livre);
 
         // Construction du DTO
         EmpruntDTO dto = new EmpruntDTO();
