@@ -1,4 +1,4 @@
-package fr.orleans.m1s1miage.group4.backend.model.dto;
+package fr.orleans.m1s1miage.group4.backend.model.dto.demande;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Administrateur;
 import fr.orleans.m1s1miage.group4.backend.model.entity.StatutEmprunt;

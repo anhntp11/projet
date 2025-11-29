@@ -1,12 +1,11 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.EmpruntDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.emprunt.EmpruntDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Emprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Etudiant;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
 import fr.orleans.m1s1miage.group4.backend.model.exception.EtudiantInconnuException;
 import fr.orleans.m1s1miage.group4.backend.model.exception.LivreInconnuException;
-import fr.orleans.m1s1miage.group4.backend.model.exception.LivrePlusEnStockException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EmpruntRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.EtudiantRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.LivreRepository;

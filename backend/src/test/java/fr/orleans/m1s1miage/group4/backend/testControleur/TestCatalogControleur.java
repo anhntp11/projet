@@ -1,6 +1,6 @@
 //package fr.orleans.m1s1miage.group4.backend.testControleur;
 //
-//import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
+//import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreDTO;
 //import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RequestMapping;

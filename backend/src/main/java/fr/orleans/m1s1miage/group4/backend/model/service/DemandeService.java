@@ -1,8 +1,8 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.DemandeDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.DemandeEmpruntDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.DemandeRetourDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.demande.DemandeDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.demande.DemandeEmpruntDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.demande.DemandeRetourDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeRetour;
 import fr.orleans.m1s1miage.group4.backend.model.repository.DemandeEmpruntRepository;

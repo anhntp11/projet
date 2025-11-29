@@ -1,8 +1,7 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.CatalogueDTO;
-import fr.orleans.m1s1miage.group4.backend.model.dto.LivreDTO;
-import fr.orleans.m1s1miage.group4.backend.model.entity.Livre;
+import fr.orleans.m1s1miage.group4.backend.model.dto.catalogue.CatalogueDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreDTO;
 import fr.orleans.m1s1miage.group4.backend.model.service.LivreService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

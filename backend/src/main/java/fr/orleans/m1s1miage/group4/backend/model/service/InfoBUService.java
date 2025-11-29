@@ -1,6 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.InfoBuDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.infoBU.InfoBuDTO;
 import fr.orleans.m1s1miage.group4.backend.model.dto.infoBU.InfoBUCreationDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.InfoBU;

@@ -1,4 +1,6 @@
-package fr.orleans.m1s1miage.group4.backend.model.dto;
+package fr.orleans.m1s1miage.group4.backend.model.dto.catalogue;
+
+import fr.orleans.m1s1miage.group4.backend.model.dto.livre.LivreDTO;
 
 import java.util.List;
 

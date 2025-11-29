@@ -1,6 +1,6 @@
 package fr.orleans.m1s1miage.group4.backend.controleur;
 
-import fr.orleans.m1s1miage.group4.backend.model.dto.DemandeDTO;
+import fr.orleans.m1s1miage.group4.backend.model.dto.demande.DemandeDTO;
 import fr.orleans.m1s1miage.group4.backend.model.service.DemandeService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
