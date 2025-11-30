@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class Utilsateur extends BaseEntity {
-    @Column(nullable = false, updatable = true)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)

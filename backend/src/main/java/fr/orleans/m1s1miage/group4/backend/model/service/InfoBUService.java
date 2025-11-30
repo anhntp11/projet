@@ -24,14 +24,6 @@ public class InfoBUService {
         this.buService = buService;
     }
 
-    /**
-     * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
-     * @return La list de tous les genres sauvegardés en BD
-     */
-    public List<InfoBU> findAll() {
-        return infoBURepository.findAll();
-    }
-
 
     /**
      * Recupere les info d'une BU grace a son id
@@ -44,8 +36,7 @@ public class InfoBUService {
         if (info == null) {
             throw new BuInconnueException();
         }
-        return new InfoBuDTO(
-        );
+        return new InfoBuDTO(info);
     }
 
     /**
@@ -56,17 +47,27 @@ public class InfoBUService {
      */
     public InfoBuDTO createInfoBU(InfoBUCreationDTO creationDTO) throws BuInconnueException {
         InfoBU infoBU = new InfoBU(creationDTO.getInformations(), creationDTO.getNom());
+
         BU bu = buService.findById(creationDTO.getIdBu());
         infoBU.setBu(bu);
         bu.setInfos(infoBU);
+
         infoBURepository.save(infoBU);
 
         return new InfoBuDTO(infoBU);
     }
 
-
+    /**
+     * Permet de modifier les informations d'une BU
+     * @param idInfo L'id de l'information à éditer
+     * @param editDTO Les nouvelles infos à mettre contenue dans un DTO
+     * @return Un DTO des infos mise à jour
+     * @throws InformationBUInconnueException si l'InformationBU à éditer n'est pas trouvée
+     * @throws BuInconnueException si la BU dans les nouvelles informations n'est pas trouvée
+     */
     public InfoBuDTO editInfo(Long idInfo, InfoBUCreationDTO editDTO) throws InformationBUInconnueException, BuInconnueException{
         InfoBU infoBU = infoBURepository.findById(idInfo).orElseThrow(InformationBUInconnueException::new);
+
         infoBU.setInformations(editDTO.getInformations());
         infoBU.setNom(editDTO.getNom());
         BU bu = buService.findById(editDTO.getIdBu());

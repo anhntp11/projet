@@ -49,7 +49,7 @@ public class LivreService {
      * Récupérer un livre par son id.
      * @throws LivreInconnuException si aucun livre ne correspond à l'id
      */
-    public Livre findById(Long idLivre){
+    public Livre findById(Long idLivre) throws LivreInconnuException {
         return livreRepository.findById(idLivre)
                 .orElseThrow(LivreInconnuException::new);
     }
@@ -59,8 +59,11 @@ public class LivreService {
      * @param livre Livre à remplir (nouveau ou celui à éditer)
      * @param ajout Dto du livre avec les infos à inscrire dans le livre
      * @return l'objet Livre complété.
+     * @throws BuInconnueException si la BU n'est pas trouvée
+     * @throws GenreInconnuException si le Genre n'est pas trouvé
      */
-    private Livre remplirLivre(Livre livre, LivreCreationDTO ajout){
+    private Livre remplirLivre(Livre livre, LivreCreationDTO ajout)
+    throws BuInconnueException, GenreInconnuException {
         livre.setTitre(ajout.getTitre());
         livre.setLangue(ajout.getLangue());
         livre.setAuteur(ajout.getAuteur());
@@ -87,7 +90,8 @@ public class LivreService {
      * @throws BuInconnueException si la BU n'est pas trouvé
      * @throws GenreInconnuException si le genre n'est pas trouvé
      */
-    public LivreDTO createLivre(LivreCreationDTO creationDTO) throws BuInconnueException, GenreInconnuException {
+    public LivreDTO createLivre(LivreCreationDTO creationDTO)
+            throws BuInconnueException, GenreInconnuException {
         Livre livre = remplirLivre(new Livre(), creationDTO);
 
         livreRepository.save(livre);
@@ -99,8 +103,12 @@ public class LivreService {
      * @param idLivre l'id du livre a update
      * @param livreModifie le DTO avec les modifications a effectué
      * @return Le LivreDTO de l'objet modifié
+     * @throws LivreInconnuException si le Livre n'est pas trouvé
+     * @throws BuInconnueException si la BU n'est pas trouvée
+     * @throws GenreInconnuException si le Genre n'est pas trouvé
      */
-    public LivreDTO updateLivre(Long idLivre, LivreCreationDTO livreModifie) {
+    public LivreDTO updateLivre(Long idLivre, LivreCreationDTO livreModifie)
+            throws  LivreInconnuException, BuInconnueException, GenreInconnuException {
         Livre existant = remplirLivre(findById(idLivre), livreModifie);
 
         livreRepository.save(existant);
@@ -126,8 +134,7 @@ public class LivreService {
      * @throws LivreInconnuException si l'id donné n'appartient à aucun livre
      */
     public LivreDTO getLivreById(Long idLivre) throws LivreInconnuException {
-        return new LivreDTO(livreRepository.findById(idLivre)
-                .orElseThrow(LivreInconnuException::new));
+        return new LivreDTO(findById(idLivre));
     }
 
     /**

@@ -1,34 +1,42 @@
 package fr.orleans.m1s1miage.group4.backend.model.service;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Administrateur;
+import fr.orleans.m1s1miage.group4.backend.model.exception.UtilisateurDejaExistantException;
 import fr.orleans.m1s1miage.group4.backend.model.repository.AdministrateurRepository;
+import fr.orleans.m1s1miage.group4.backend.model.repository.EtudiantRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class AdministrateurService {
-    private final AdministrateurRepository repo;
+    private final AdministrateurRepository administrateurRepository;
+    private final EtudiantRepository etudiantRepository;
 
-    public AdministrateurService(AdministrateurRepository repo) {
-        this.repo = repo;
+    public AdministrateurService(AdministrateurRepository administrateurRepository,
+                                 EtudiantRepository etudiantRepository) {
+        this.administrateurRepository = administrateurRepository;
+        this.etudiantRepository = etudiantRepository;
     }
 
     /**
-     * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
-     * @return La list de tous les administrateurs sauvegardés en BD
+     * Compte le nombre d'Administrateurs
+     * @return le nombre d'Administrateurs
      */
-    public List<Administrateur> findAll() {
-        return repo.findAll();
+    public int getAdministrateurCount(){
+        return administrateurRepository.findAll().size();
     }
 
     /**
-     * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
-     * @param administrateur L'administrateur à sauvegarder
+     * Sauvegarde l'Administrateur dans la BD
+     * @param administrateur l'Administrateur à sauvegarder
+     * @throws UtilisateurDejaExistantException si un compte Utilisateur existe déjà avec cet email
      */
-    public void save(Administrateur administrateur) {
-        repo.save(administrateur);
+    public void save(Administrateur administrateur)
+            throws UtilisateurDejaExistantException {
+        if (administrateurRepository.findByEmail(administrateur.getEmail()).isPresent()
+                || etudiantRepository.findByEmail(administrateur.getEmail()).isPresent()) {
+            throw new UtilisateurDejaExistantException();
+        } else  {
+            administrateurRepository.save(administrateur);
+        }
     }
-
-
 }

@@ -74,6 +74,12 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
     }
 
+    @ExceptionHandler(UtilisateurDejaExistantException.class)
+    public ResponseEntity<ErrorDTO> utilisateurDejaExistantException(UtilisateurDejaExistantException e) {
+        HttpStatus status = HttpStatus.CONFLICT;
+        return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
+    }
+
     // INCONNU =======
 
     @ExceptionHandler(BuInconnueException.class)
