@@ -1,0 +1,55 @@
+.retours-container {
+  padding: 40px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1e2a3a;
+}
+
+.table-retours {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.table-retours th,
+.table-retours td {
+  padding: 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.table-retours th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+  color: #1e2a3a;
+}
+
+.table-retours tr:hover {
+  background-color: #fbfbfb;
+}
+
+.statut {
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+}
+
+.statut.en_attente {
+  background-color: #f0ad4e;
+}
+
+.statut.valide {
+  background-color: #28a745;
+}
+
+.statut.refuse {
+  background-color: #dc3545;
+}

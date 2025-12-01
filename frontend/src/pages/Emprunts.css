@@ -1,0 +1,133 @@
+/* CONTENEUR GLOBAL */
+.emprunts-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  font-family: "Inter", sans-serif;
+  color: #1f2d38;
+  text-align: center; /* Centrer titres + paragraphes */
+}
+
+/* HEADER */
+.emprunts-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1a2b49;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #5a6472;
+  margin-bottom: 50px;
+}
+
+/* SECTIONS */
+.block {
+  margin-bottom: 70px;
+}
+
+.block-title {
+  font-size: 26px;
+  color: #1a2b49;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* MESSAGE VIDE */
+.empty {
+  padding: 20px;
+  border: 1px solid #d8dee6;
+  background: #f7f9fb;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #515c6c;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* GRID CENTRÉE */
+.grid {
+  display: flex;
+  justify-content: center; /* Centre la grille */
+  flex-wrap: wrap;
+  gap: 30px;
+  width: 100%;
+  padding: 10px 0;
+}
+
+/* CARTE */
+.card {
+  border: 1px solid #d8dee6;
+  background: #ffffff;
+  padding: 28px;
+  border-radius: 12px;
+  width: 330px; /* Taille uniforme et centrée */
+  transition: 0.25s;
+  text-align: left; /* Contenu interne aligné proprement */
+}
+
+.card:hover {
+  border-color: #bfc9d6;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.card-history {
+  background: #f8fafc;
+  border-left: 4px solid #4c8e52;
+}
+
+/* CONTENU */
+.titre-livre {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.info {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: #3d4a58;
+}
+
+.info span {
+  font-weight: 600;
+}
+
+/* BOUTONS */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.btn-primary {
+  background: #1a2b49;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #16233b;
+}
+
+.btn-secondary {
+  background: white;
+  border: 1.5px solid #1a2b49;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #1a2b49;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #eef2f6;
+}

@@ -1,0 +1,32 @@
+.catalogue-container {
+  padding: 40px;
+}
+
+.livres-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.livre-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.livre-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.btn-emprunt {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #0056b3;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
