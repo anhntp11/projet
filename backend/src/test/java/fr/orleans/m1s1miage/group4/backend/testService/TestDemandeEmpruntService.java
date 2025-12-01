@@ -32,6 +32,7 @@ public class TestDemandeEmpruntService {
         when(demandeEmpruntRepository.findAll()).thenReturn(List.of(demande1, demande2));
         List<DemandeEmprunt> result = demandeEmpruntService.findAll();
         assertEquals(2, result.size());
+        assertEquals(demande1, result.get(0));
         verify(demandeEmpruntRepository, times(1)).findAll();
     }
 
@@ -60,6 +61,25 @@ public class TestDemandeEmpruntService {
     void testValiderDemandeIdExistePas() {
         when(demandeEmpruntRepository.findById(1L)).thenReturn(Optional.empty());
         assertThrows(RuntimeException.class, () -> demandeEmpruntService.validerDemande(1L));
+        verify(demandeEmpruntRepository).findById(1L);
+        verify(demandeEmpruntRepository, never()).save(any());
+    }
+
+    @Test
+    void testRejeterDemandeIdExist(){
+        DemandeEmprunt demande = new DemandeEmprunt();
+        demande.setStatut_Emprunt(StatutEmprunt.EMPRUNTER);
+        when(demandeEmpruntRepository.findById(1L)).thenReturn(Optional.of(demande));
+        when(demandeEmpruntRepository.save(demande)).thenReturn(demande);
+        DemandeEmprunt rs = demandeEmpruntService.rejeterDemande(1L);
+        assertEquals(StatutEmprunt.RENDU, rs.getStatut_Emprunt());
+        verify(demandeEmpruntRepository).findById(1L);
+        verify(demandeEmpruntRepository).save(demande);
+    }
+    @Test
+    void testRejeterDemandeIdExistePas(){
+        when(demandeEmpruntRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(RuntimeException.class, () -> demandeEmpruntService.rejeterDemande(1L));
         verify(demandeEmpruntRepository).findById(1L);
         verify(demandeEmpruntRepository, never()).save(any());
     }

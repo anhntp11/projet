@@ -34,6 +34,10 @@ public class BU extends BaseEntity {
         return nom;
     }
 
+    public Long getIdBu(){return idBU;}
+
+    public void setIdBu(Long idBu){this.idBU = idBu;}
+
     public void setNom(String nom) {
         this.nom = nom;
     }
