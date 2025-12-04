@@ -1,4 +1,4 @@
-package fr.orleans.m1s1miage.group4.backend.config;
+package fr.orleans.m1s1miage.group4.backend.configuration;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.BU;
 import fr.orleans.m1s1miage.group4.backend.model.entity.Genre;

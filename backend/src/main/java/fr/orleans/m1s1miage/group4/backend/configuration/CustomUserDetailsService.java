@@ -1,4 +1,4 @@
-package fr.orleans.m1s1miage.group4.backend.model.service.auth;
+package fr.orleans.m1s1miage.group4.backend.configuration;
 
 import fr.orleans.m1s1miage.group4.backend.model.entity.Utilsateur;
 import fr.orleans.m1s1miage.group4.backend.model.exception.EtudiantInconnuException;

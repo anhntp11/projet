@@ -1,6 +1,5 @@
 package fr.orleans.m1s1miage.group4.backend.configuration;
 
-import fr.orleans.m1s1miage.group4.backend.model.service.auth.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

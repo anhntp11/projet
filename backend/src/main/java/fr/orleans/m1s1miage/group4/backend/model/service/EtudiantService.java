@@ -15,6 +15,14 @@ public class EtudiantService {
     }
 
     /**
+     * Compte le nombre d'Etudiant
+     * @return le nombre d'Etudiant
+     */
+    public int getEtudiantCount(){
+        return repo.findAll().size();
+    }
+
+    /**
      * Permet de sauvegarder l'étudiant dans la BD
      * @param etudiant L'étudiant à sauvegarder
      */
