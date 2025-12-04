@@ -27,7 +27,7 @@ GET http://localhost:8080/api/etudiants/{{numEtu}}/emprunt/
 POST http://localhost:8080/api/retour/{{idEmprunt}}
 
 ### Information             /info                               idBu
-GET http://localhost:8080/api/info
+GET http://localhost:8080/api/infos
 
 ### Etendre emprunt         /emprunt/{idEmprunt}/extension
 PATCH http://localhost:8080/api/emprunts/{{idEmprunt}}/extension
@@ -67,7 +67,7 @@ POST http://localhost:8080/api/livres
 DELETE http://localhost:8080/api/livres
 
 ### Modifier info Bu        /info                               idBu
-PATCH http://localhost:8080/api/info
+PATCH http://localhost:8080/api/infos
 
 ### Modifier eturdiant      /etudiant/{numEtu}                  userDTO
 PATCH http://localhost:8080/api/etudiants/{{numEtu}}
