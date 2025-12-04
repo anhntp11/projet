@@ -1,8 +1,11 @@
 package fr.orleans.m1s1miage.group4.backend.model.entity;
 
+import fr.orleans.m1s1miage.group4.backend.model.dto.utilisateur.EtudiantRegisterDTO;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,7 +28,7 @@ public class Etudiant extends Utilsateur {
     private String departement;
 
     @OneToMany(mappedBy = "etudiant", cascade = CascadeType.ALL)
-    private Set<Notification> notifications = new HashSet<>();
+    private List<Notification> notifications = new ArrayList<>();
 
     //constructeur
 
@@ -40,14 +43,26 @@ public class Etudiant extends Utilsateur {
         this.departement = departement;
     }
 
+    public Etudiant(EtudiantRegisterDTO etudiantRegisterDTO) {
+        super(
+                etudiantRegisterDTO.email(),
+                etudiantRegisterDTO.motDePasse(),
+                RoleUtilisateur.ETUDIANT
+        );
+        this.nom = etudiantRegisterDTO.nom();
+        this.prenom = etudiantRegisterDTO.prenom();
+        this.departement = etudiantRegisterDTO.departement();
+        this.numEtudiant = etudiantRegisterDTO.numEtudiant();
+    }
+
     //getters / setters
 
 
-    public Set<Notification> getNotifications() {
+    public List<Notification> getNotifications() {
         return notifications;
     }
 
-    public void setNotifications(Set<Notification> notifications) {
+    public void setNotifications(List<Notification> notifications) {
         this.notifications = notifications;
     }
 

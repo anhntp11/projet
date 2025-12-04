@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("/api/info")
+@RequestMapping("/api/infos")
 public class infoBUControleur {
 
     InfoBUService infoBUService;
@@ -22,7 +22,7 @@ public class infoBUControleur {
     }
 
     @GetMapping
-    public ResponseEntity<InfoBuDTO> getBuDTO(
+    public ResponseEntity<InfoBuDTO> getInfo(
             @RequestParam Long idBU
     ) {
         InfoBuDTO infoBuDTO = infoBUService.getInfoBUDtoByBUId(idBU);

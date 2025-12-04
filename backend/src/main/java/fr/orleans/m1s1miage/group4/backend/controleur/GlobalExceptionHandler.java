@@ -58,12 +58,24 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
     }
 
+    @ExceptionHandler(ConnexionImpossibleException.class)
+    public ResponseEntity<ErrorDTO> connexionImpossibleException(ConnexionImpossibleException e) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
+        return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
+    }
+
 
 
     // DEJA EXISTANT =======
 
     @ExceptionHandler(BuDejaExistanteException.class)
     public ResponseEntity<ErrorDTO> buDejaExistanteException(BuDejaExistanteException e) {
+        HttpStatus status = HttpStatus.CONFLICT;
+        return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
+    }
+
+    @ExceptionHandler(UtilisateurDejaExistantException.class)
+    public ResponseEntity<ErrorDTO> utilisateurDejaExistantException(UtilisateurDejaExistantException e) {
         HttpStatus status = HttpStatus.CONFLICT;
         return ResponseEntity.status(status).body(new ErrorDTO(e.getMessage(), status.value()));
     }

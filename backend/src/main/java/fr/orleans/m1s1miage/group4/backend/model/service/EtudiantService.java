@@ -15,15 +15,7 @@ public class EtudiantService {
     }
 
     /**
-     * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
-     * @return La list de tous les étudiants sauvegardés en BD
-     */
-    public List<Etudiant> findAll() {
-        return repo.findAll();
-    }
-
-    /**
-     * Méthode créer pour tester le bon fonctionnement de JPA et pour servir d'exemple.
+     * Permet de sauvegarder l'étudiant dans la BD
      * @param etudiant L'étudiant à sauvegarder
      */
     public void save(Etudiant etudiant) {

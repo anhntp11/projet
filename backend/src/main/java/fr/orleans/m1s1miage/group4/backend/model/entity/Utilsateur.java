@@ -5,12 +5,13 @@ import jakarta.persistence.*;
 
 @MappedSuperclass
 public abstract class Utilsateur extends BaseEntity {
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String motDePasse;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private RoleUtilisateur role;
 

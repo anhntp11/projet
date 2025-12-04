@@ -20,7 +20,7 @@ public class BUService {
     }
 
     /**
-     * Récupére toutes les BU en bd sous forme de DTO
+     * Récupère toutes les BU en bd sous forme de DTO
      * @return La liste de tous les BUDTO des bu sauvegardées en BD
      */
     public List<BUDTO> findAll() {
@@ -36,7 +36,7 @@ public class BUService {
     }
 
     /**
-     * Recupère une BU de la bd selon son id
+     * Récupère une BU de la bd selon son id
      * @param id l'id de la BU à récupérer
      * @return l'objet BU demandé
      * @throws BuInconnueException si l'ID est inconnu.
@@ -49,8 +49,10 @@ public class BUService {
      * Sauvegarde la BU en BD
      * @param buCreationDTO le dto de creation de la BU
      * @return un BUDTO de la BU
+     * @throws BuDejaExistanteException si le nom de la nouvelle BU est déjà utilisé
      */
-    public BUDTO creerBU(BUCreationDTO buCreationDTO) {
+    public BUDTO creerBU(BUCreationDTO buCreationDTO)
+            throws  BuDejaExistanteException {
         BU bu = repo.findByNom(buCreationDTO.getNom());
         if (bu != null) {
             throw new BuDejaExistanteException();
