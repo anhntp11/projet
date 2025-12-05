@@ -36,4 +36,12 @@ public class Notification extends BaseEntity {
     public void setMessage(String message) {
         this.message = message;
     }
+
+    public Etudiant getEtudiant() {
+        return etudiant;
+    }
+
+    public void setEtudiant(Etudiant etudiant) {
+        this.etudiant = etudiant;
+    }
 }

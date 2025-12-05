@@ -1,5 +1,8 @@
 package fr.orleans.m1s1miage.group4.backend.model.dto.motiification;
 
+import fr.orleans.m1s1miage.group4.backend.model.entity.Etudiant;
+import fr.orleans.m1s1miage.group4.backend.model.entity.Notification;
+
 public class NotificationDTO {
     private Long idNotification;
     private String message;
@@ -13,6 +16,12 @@ public class NotificationDTO {
         this.idNotification = idNotification;
         this.message = message;
         this.etudiantId = etudiantId;
+    }
+
+    public NotificationDTO(Notification notification) {
+        this.idNotification = notification.getId();
+        this.message = notification.getMessage();
+        this.etudiantId = notification.getEtudiant().getIdEtudiant();
     }
 
     // Getters et setters

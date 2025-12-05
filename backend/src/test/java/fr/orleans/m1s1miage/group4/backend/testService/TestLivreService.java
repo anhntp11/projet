@@ -202,26 +202,6 @@ public class TestLivreService {
         verify(livreRepository).findByTitreContainingIgnoreCase(titreRecherche);
     }
 
-//    @Test
-//    void testChercherLivreParAuteur(){
-//        Livre l1 = new Livre();
-//        l1.setAuteur("Victo Hugo");
-//        l1.setIdLivre(1L);
-//
-//        Livre l2 = new Livre();
-//        l2.setAuteur("Victor Tacdieu");
-//        l2.setIdLivre(2L);
-//
-//        String titreRecherche = "Victor";
-//        when(livreRepository.findByAuteurContainingIgnoreCase(titreRecherche)
-//                .thenReturn(Arrays.asList(l1, l2)));
-//        List<LivreDTO> rs = livreService.chercherParAuteur(titreRecherche);
-//        assertEquals(2, rs.size());
-//        assertEquals("Victor Tacdieu", rs.get(0).getAuteur());
-//        assertEquals("Victor Hugo", rs.get(1).getAuteur());
-//        verify(livreRepository).findByAuteurContainingIgnoreCase(titreRecherche);
-//    }
-
     @Test
     void testChercherLivreParGenre(){
 
