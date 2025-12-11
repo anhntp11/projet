@@ -204,6 +204,32 @@ public class TestLivreService {
 
     @Test
     void testChercherLivreParGenre(){
+        String genreRecherche = "Informatique";
 
+        Genre genre = new Genre();
+        genre.setIdGenre(1L);
+        genre.setName(genreRecherche);
+        genre.setDescription("Description informatique");
+
+        Livre livre1 = new Livre();
+        livre1.setIdLivre(1L);
+        livre1.setTitre("Spring web debutant");
+        livre1.setAuteur("Yohan");
+        livre1.setGenres(List.of(genre));
+
+        Livre livre2 = new Livre();
+        livre2.setIdLivre(2L);
+        livre2.setTitre("Test qualite et logiciel");
+        livre2.setAuteur("Martin");
+        livre2.setGenres(List.of(genre));
+
+        when(livreRepository.findByGenre(genreRecherche))
+                .thenReturn(Arrays.asList(livre1, livre2));
+
+        List<LivreDTO> rs = livreService.chercherParGenre(genreRecherche);
+        assertEquals(2, rs.size());
+        assertEquals("Spring web debutant", rs.get(0).getTitre());
+        assertEquals("Test qualite et logiciel", rs.get(1).getTitre());
+        verify(livreRepository).findByGenre(genreRecherche);
     }
 }

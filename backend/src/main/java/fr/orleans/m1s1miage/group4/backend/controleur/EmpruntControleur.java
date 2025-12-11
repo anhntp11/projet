@@ -26,8 +26,7 @@ public class EmpruntControleur {
      */
     @PostMapping("/livres/{idLivre}/emprunt")
     public ResponseEntity<EmpruntDTO> emprunterLivre(
-            @PathVariable Long idLivre
-    ) {
+            @PathVariable Long idLivre) {
         String emailEtudiant = "mail temporaire"; //TODO auth
         EmpruntDTO emprunt = empruntService.emprunterLivre(idLivre, emailEtudiant);
 
