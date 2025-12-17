@@ -61,7 +61,7 @@ public class AuthService {
      * @param etudiantRegisterDTO Le DTO avec les infos de l'étudiant
      * @return Un DTO du JWT de l'inscription
      */
-    public JwtDTO inscyption(EtudiantRegisterDTO etudiantRegisterDTO) {
+    public JwtDTO insciption(EtudiantRegisterDTO etudiantRegisterDTO) {
         String encodedPassword = passwordEncoder.encode(etudiantRegisterDTO.motDePasse());
 
         Etudiant etudiant = new Etudiant(etudiantRegisterDTO);

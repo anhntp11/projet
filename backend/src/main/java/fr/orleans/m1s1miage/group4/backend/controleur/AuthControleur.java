@@ -50,7 +50,7 @@ public class AuthControleur {
     public ResponseEntity<JwtDTO> inscription(
             @RequestBody EtudiantRegisterDTO etudiantRegisterDTO
             ) {
-        JwtDTO jwt = authService.inscyption(etudiantRegisterDTO);
+        JwtDTO jwt = authService.insciption(etudiantRegisterDTO);
         return ResponseEntity.status(HttpStatus.OK).body(jwt);
     }
 }

@@ -1,0 +1,26 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+POST http://localhost:8080/api/demandes
+Authorization: Basic YW1pbmE6bW90ZGVwYXNzZQ==
+Content-Type: application/json
+
+{
+  "titre": "Demande de stage",
+  "auteur": "Amina",
+  "dateDemande": "2025-11-21"
+}
+###
+POST http://localhost:8080/api/demandes
+Authorization: Basic YW1pbmFAdGVzdC5jb206dGVzdDEyMw==
+Content-Type: application/json
+
+{
+"idLivre": 3,
+"idEtudiant": 1,
+"dateDemande": "2025-11-21"
+}
+###
+GET http://localhost:8080/api/demandes

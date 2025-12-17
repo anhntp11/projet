@@ -1,0 +1,56 @@
+###Permet de creer une BU
+POST http://localhost:8080/api/bu
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nom" : "test1"
+}
+
+###Permet de creer une BU
+POST http://localhost:8080/api/bu
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nom" : "test2"
+}
+
+###Permet de récupérer les BU
+GET http://localhost:8080/api/bu
+Accept: application/json
+Content-Type: application/json
+
+
+
+
+
+###Permet de creer des informations pour la BU dont l'id est en body
+POST http://localhost:8080/api/infos
+Accept: application/json
+Content-Type: application/json
+
+{
+  "informations": "Info",
+  "nom": "nom",
+  "idBu" : 1
+}
+
+###Permet de récupérer les informations de la BU dont l'id est en param
+GET http://localhost:8080/api/infos?idBU=1
+Accept: application/json
+Content-Type: application/json
+
+
+###Permet d'éditer des informations pour la BU dont l'id est en body
+PATCH http://localhost:8080/api/infos/1
+Accept: application/json
+Content-Type: application/json
+
+{
+  "informations": "InfoEdit",
+  "nom": "nomEdit",
+  "idBu" : 2
+}
+
+

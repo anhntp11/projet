@@ -22,7 +22,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
 
     /*
-        Ceci est un filtre, bonjour monsieur le filtre. o/
+        Ceci est un filtre, bonjour Monsieur le filtre. o/
         Ce filtre, dans son infinie bonté, vérifie si les requêtes entrantes contiennent un JWT valide.
         Si c'est le cas, il extrait le mail et le charge dans Spring
 

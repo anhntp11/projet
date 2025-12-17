@@ -1,0 +1,48 @@
+### Créé livre Harry Potter
+POST http://localhost:8080/api/livres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbkBidS5mciIsImlhdCI6MTc2NDg4MTgzMiwiZXhwIjoxNzY0OTE3ODMyfQ.nlWmIrQXRCS40K7hOh51DAAjLe_Mm77QDdDnQFPGZAjFiqR3tqg6Uaas1iye00A5m90iFSfhL57jzzErvcIZgkWefTwRtAIYg9TctAP4oZLCU74XZYQxtBfLKaRVhYlQWTQx530L7hJUsG7Jf86JJAeRVrBTtYAcIMdQIPR0cMMYjzUjpL48CMVZM_4zrS9X3v3WKnOH2qwISjeCE6SfpuJeKUcgFOE4p0dfIlGb4mOYKiKiAA0jjFehli2yTRpTwRxuAtybseNVlzEmwduuFspN-rlM2zDCm8O8qDIIaqFrGwpcar-wf_gDaAb87rogLJzkNTCGcJfB7mm0cyrMXA
+
+{
+  "titre": "Harry Potter à l'école des sorciers",
+  "auteur": "J.K. Rowling",
+  "langue": "francais",
+  "stock": 1,
+  "genreIds": [],
+  "buIds": [1]
+}
+
+### Créé livre Le petit prince
+POST http://localhost:8080/api/livres
+Content-Type: application/json
+
+{
+  "titre": "Le petit prince",
+  "auteur": "Antoine de Saint Exuperi",
+  "langue": "francais",
+  "stock": 1,
+  "genreIds": [],
+  "buIds": [1]
+}
+
+### Test livre bien créé
+GET http://localhost:8080/api/livres
+
+### Test recherche par titre
+GET http://localhost:8080/api/catalogue/filtre?titre=Harry
+Accept: application/json
+
+### Test recherche par auteur
+GET http://localhost:8080/api/catalogue/filtre?auteur=Rowling
+Accept: application/json
+
+### Test recherche par genre
+GET http://localhost:8080/api/catalogue/filtre?genre=Fantasy
+Accept: application/json
+
+### Test sans paramètre
+GET http://localhost:8080/api/catalogue
+Accept: application/json
+
+### Test récuperation du catalogue
+GET http://localhost:8080/api/catalogue/filtre

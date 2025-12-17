@@ -1,0 +1,10 @@
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/BackendApplicationTests.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testControleur/TestCatalogControleur.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testControleur/TestDemandeControleur.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testControleur/TestLivresController.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testSecurity/TestAuthControleur.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testSecurity/TestAuthService.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testService/TestDemandeEmpruntService.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testService/TestDemandeRetourService.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testService/TestEmpruntService.java
+/home/ducvu/Documents/projet/backend/src/test/java/fr/orleans/m1s1miage/group4/backend/testService/TestLivreService.java

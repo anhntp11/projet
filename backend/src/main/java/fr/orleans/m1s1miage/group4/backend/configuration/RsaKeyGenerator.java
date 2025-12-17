@@ -10,6 +10,7 @@ import java.util.Base64;
 public class RsaKeyGenerator {
 
     public static void main(String[] args) throws Exception {
+        String basePath = System.getProperty("user.dir");
         KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
         generator.initialize(2048);
         KeyPair keyPair = generator.generateKeyPair();
@@ -22,8 +23,8 @@ public class RsaKeyGenerator {
                 + Base64.getMimeEncoder(64, "\n".getBytes()).encodeToString(keyPair.getPublic().getEncoded())
                 + "\n-----END PUBLIC KEY-----\n";
 
-        try (FileWriter privateWriter = new FileWriter("private_key.pem");
-             FileWriter publicWriter = new FileWriter("public_key.pem")) {
+        try (FileWriter privateWriter = new FileWriter(basePath + "/private_key.pem");
+             FileWriter publicWriter = new FileWriter(basePath + "/public_key.pem")) {
             privateWriter.write(privateKey);
             publicWriter.write(publicKey);
         }

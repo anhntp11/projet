@@ -1,0 +1,79 @@
+# Infos :
+#   Page                    /api/url                                parametre(s)
+#
+
+### Inscription             /inscription                        email, mdp, numEtu - autres infos
+POST http://localhost:8080/api/inscription
+
+### Connexion               /connexion                          email, mdp
+POST http://localhost:8080/api/connexion
+
+### Catalogue               /
+GET http://localhost:8080/api/catalogue
+
+### Catalogue Recherche     /                                   paramRecherche[]
+GET http://localhost:8080/api/catalogue
+
+### Ouvrage                 /livre/{idLivre}                    idBu
+GET http://localhost:8080/api/livres/{{idLivre}}
+
+### Emprunter               /livre/{idLivre}/emprunt
+POST http://localhost:8080/api/livres/{{idLivre}}/emprunt
+
+### Liste emprunt           /etudiant/{numEtu}/emprunt/
+GET http://localhost:8080/api/etudiants/{{numEtu}}/emprunt/
+
+### Retourner               /retour/{idEmprunt}
+POST http://localhost:8080/api/retour/{{idEmprunt}}
+
+### Information             /info                               idBu
+GET http://localhost:8080/api/infos
+
+### Etendre emprunt         /emprunt/{idEmprunt}/extension
+PATCH http://localhost:8080/api/emprunts/{{idEmprunt}}/extension
+
+### Tableau de bord         /tableau-de-bord                          user (optionnel, sinon celui de l'utilsateur qui envoie la requete)
+# admin et user
+GET http://localhost:8080/api/tableau-de-bord
+
+### Notification            /notifications
+GET http://localhost:8080/api/notifications
+
+
+#--------------------------- ADMIN
+
+### Demandes                /demande
+GET http://localhost:8080/api/demandes
+
+### Valider demande         /demande/{idDemande}/validation
+PATCH http://localhost:8080/api/demandes/{{idDemande}}/validation
+
+### Rejeter demande         /demande/{idDemande}/rejet
+PATCH http://localhost:8080/api/demandes/{{idDemande}}/rejet
+
+### Modifier ouvrage        /livre/{idLivre}
+PATCH http://localhost:8080/api/livres/{{idLivre}}
+
+### Aff. catalogue(modif)   /catalogue
+GET http://localhost:8080/api/catalogue/edition
+
+### Modifier catalogue      /catalogue                          liste ouvrage
+PATCH http://localhost:8080/api/catalogue/edition
+
+### Ajouter ouvrage         /livre                              ouvrageDTO
+POST http://localhost:8080/api/livres
+
+### Supprime ouvrage(s)     /livre                              liste id Ouvrage
+DELETE http://localhost:8080/api/livres
+
+### Modifier info Bu        /info                               idBu
+PATCH http://localhost:8080/api/infos
+
+### Modifier eturdiant      /etudiant/{numEtu}                  userDTO
+PATCH http://localhost:8080/api/etudiants/{{numEtu}}
+
+### Supprimer etudiant      /etudiant/{numEtu}
+DELETE http://localhost:8080/api/etudiants/{{numEtu}}
+
+### Rappeler etudiant       /etudiant/{numEtu}/rappel
+POST http://localhost:8080/api/etudiants/{{numEtu}}/rappel
