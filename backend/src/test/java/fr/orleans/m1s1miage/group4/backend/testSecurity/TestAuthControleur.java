@@ -20,41 +20,22 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
-//@AutoConfigureMockMvc
 @AutoConfigureMockMvc(addFilters = false)
 public class TestAuthControleur {
 
     @Autowired
     private MockMvc mockMvc;
-
     @Autowired
     private ObjectMapper objectMapper;
-
     @MockitoBean
     private AuthService authService;
-
     @MockitoBean
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @MockitoBean
     private CustomUserDetailsService customUserDetailsService;
-
     @MockitoBean
     private JwtService jwtService;
 
-
-/*
-    void TestConnexionSuccess() throws Exception {
-        LoginDTO login = new LoginDTO("user@test", "password");
-        when(authService.login(any())).thenReturn(new JwtDTO("jwt-token"));
-
-        mockMvc.perform(post("/api/auth/connexion")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(login)))
-                .andDo(result -> System.out.println("Response: " + result.getResponse().getContentAsString()))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.token").value("jwt-token"));
-    }*/
     @Test
     void testConnexion_Success() throws Exception {
         LoginDTO loginDTO = new LoginDTO("user@test.fr", "password");
