@@ -24,13 +24,15 @@ public class DemandeControleur {
 
     @PatchMapping("/demandes/{id}/validation")
     public ResponseEntity<Void> validerDemande(@PathVariable Long id) {
-        // TODO: récupérer la demande et changer le statut + dateApprobation
+        // TODO: récupérer la demande et changer le statut + dateApprobation ==> ok
+        demandeService.validerDemande(id);
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/demandes/{id}/rejet")
     public ResponseEntity<Void> rejeterDemande(@PathVariable Long id) {
-        // TODO: récupérer la demande et changer le statut + dateApprobation
+        // TODO: récupérer la demande et changer le statut + dateApprobation => ok
+        demandeService.rejeterDemande(id);
         return ResponseEntity.ok().build();
     }
 }

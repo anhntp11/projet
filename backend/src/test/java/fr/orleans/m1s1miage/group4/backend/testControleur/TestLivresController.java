@@ -193,28 +193,18 @@ class TestLivresController {
 
     @Autowired
     private MockMvc mockMvc;
-
     @Autowired
     private ObjectMapper objectMapper;
-
     @MockitoBean
     private LivreService livreService;
-
-    // === MOCK SERVICES ===
     @MockitoBean
     private AuthService authService;
-
-    // === MOCK SECURITY BEANS (RẤT QUAN TRỌNG) ===
     @MockitoBean
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @MockitoBean
     private CustomUserDetailsService customUserDetailsService;
-
     @MockitoBean
     private JwtService jwtService;
-
-    // CASE 1: GET /api/livres
 
     @Test
     void getAllLivres() throws Exception {
@@ -226,8 +216,6 @@ class TestLivresController {
                 .andExpect(jsonPath("$.data").isArray())
                 .andExpect(jsonPath("$.data.length()").value(2));
     }
-
-    // CASE 2: POST /api/livres
 
     @Test
     void createLivre() throws Exception {
@@ -241,8 +229,6 @@ class TestLivresController {
                         .content(objectMapper.writeValueAsString(creationDTO)))
                 .andExpect(status().isCreated());
     }
-
-    // CASE 3: GET /api/livres/{id} → 404
 
     @Test
     void getLivreById_NotFound() throws Exception {

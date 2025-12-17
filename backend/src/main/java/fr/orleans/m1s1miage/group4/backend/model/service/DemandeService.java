@@ -5,10 +5,12 @@ import fr.orleans.m1s1miage.group4.backend.model.dto.demande.DemandeEmpruntDTO;
 import fr.orleans.m1s1miage.group4.backend.model.dto.demande.DemandeRetourDTO;
 import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.entity.DemandeRetour;
+import fr.orleans.m1s1miage.group4.backend.model.entity.StatutEmprunt;
 import fr.orleans.m1s1miage.group4.backend.model.repository.DemandeEmpruntRepository;
 import fr.orleans.m1s1miage.group4.backend.model.repository.DemandeRetourRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,4 +57,60 @@ public class DemandeService {
 
         return demandes;
     }
+
+    public void validerDemande(Long id) {
+
+        if (empruntRepo.findById(id).isPresent()) {
+            DemandeEmprunt userDemande = empruntRepo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Demande emprunt non trouvée"));
+
+            userDemande.setStatut_Emprunt(StatutEmprunt.VALIDER);
+            userDemande.setDateApprobationEmprunt(LocalDateTime.now());
+
+            empruntRepo.save(userDemande);
+            return;
+        }
+
+        if (retourRepo.findById(id).isPresent()) {
+            DemandeRetour userDemande = retourRepo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Demande retour non trouvée"));
+
+            userDemande.setStatut_Emprunt(StatutEmprunt.VALIDER);
+            userDemande.setDateApprobationEmprunt(LocalDateTime.now());
+
+            retourRepo.save(userDemande);
+            return;
+        }
+
+        throw new RuntimeException("Aucune demande trouvée avec l'id : " + id);
+    }
+
+
+    public void rejeterDemande(Long id) {
+
+        if (empruntRepo.findById(id).isPresent()) {
+            DemandeEmprunt userDemande = empruntRepo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Demande emprunt non trouvée"));
+
+            userDemande.setStatut_Emprunt(StatutEmprunt.REJETER);
+            userDemande.setDateApprobationEmprunt(LocalDateTime.now());
+
+            empruntRepo.save(userDemande);
+            return;
+        }
+
+        if (retourRepo.findById(id).isPresent()) {
+            DemandeRetour userDemande = retourRepo.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Demande retour non trouvée"));
+
+            userDemande.setStatut_Emprunt(StatutEmprunt.REJETER);
+            userDemande.setDateApprobationEmprunt(LocalDateTime.now());
+
+            retourRepo.save(userDemande);
+            return;
+        }
+
+        throw new RuntimeException("Aucune demande trouvée avec l'id : " + id);
+    }
+
 }

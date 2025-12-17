@@ -27,22 +27,16 @@ class TestNotificationControleur {
 
     @Autowired
     private MockMvc mockMvc;
-
     @Autowired
     private ObjectMapper objectMapper;
-
     @MockitoBean
     private NotificationService notificationService;
-
     @MockitoBean
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @MockitoBean
     private CustomUserDetailsService customUserDetailsService;
-
     @MockitoBean
     private JwtService jwtService;
-
     @MockitoBean
     private AuthService authService;
 

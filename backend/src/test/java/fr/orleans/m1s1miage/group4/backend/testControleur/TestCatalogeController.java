@@ -29,22 +29,16 @@ class TestCatalogueController {
 
     @Autowired
     private MockMvc mockMvc;
-
     @Autowired
     private ObjectMapper objectMapper;
-
     @MockitoBean
     private LivreService livreService;
-
     @MockitoBean
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @MockitoBean
     private CustomUserDetailsService customUserDetailsService;
-
     @MockitoBean
     private JwtService jwtService;
-
     @MockitoBean
     private AuthService authService;
 
@@ -58,7 +52,6 @@ class TestCatalogueController {
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 
-    // =====================================================
     @Test
     void testRechercherLivresAvecFiltres() throws Exception {
         LivreDTO livre1 = new LivreDTO();
@@ -69,7 +62,7 @@ class TestCatalogueController {
 
         mockMvc.perform(get("/api/catalogue/filtre")
                         .param("titre", "Java")
-                        .param("auteur", "Martin")
+                        .param("auteur", "A")
                         .param("genre", "Informatique"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.size()").value(2));

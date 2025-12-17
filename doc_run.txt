@@ -132,10 +132,10 @@ docker run --name mysql-backend \
   -p 3307:3306 \
   -d mysql:8.3
 
-docker ps
-
 CREATE DATABASE monapp_db;
 EXIT;
 
 Run RsaKeyGenerator => java -cp target/classes fr.orleans.m1s1miage.group4.backend.configuration.RsaKeyGenerator
+docker start mysql-backend
+docker ps
 

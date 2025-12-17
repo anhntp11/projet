@@ -28,22 +28,16 @@ class TestInfoBUControleur {
 
     @Autowired
     private MockMvc mockMvc;
-
     @Autowired
     private ObjectMapper objectMapper;
-
     @MockitoBean
     private InfoBUService infoBUService;
-
     @MockitoBean
     private JwtAuthenticationFilter jwtAuthenticationFilter;
-
     @MockitoBean
     private CustomUserDetailsService customUserDetailsService;
-
     @MockitoBean
     private JwtService jwtService;
-
     @MockitoBean
     private AuthService authService;
 
